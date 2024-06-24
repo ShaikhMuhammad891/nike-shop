@@ -88,3 +88,27 @@ export const Cart = (props) => (
     </defs>
   </svg>
 );
+
+export const ArrowBack = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={49}
+    height={48}
+    fill="none"
+    {...props}
+  >
+    <rect width={48} height={48} x={0.984} fill="#F5F5F5" rx={24} />
+    <g clipPath="url(#a)">
+      <path
+        stroke="#CCC"
+        strokeWidth={1.5}
+        d="M28.51 30.966 21.541 24l6.967-6.967"
+      />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" d="M12.984 12h24v24h-24z" />
+      </clipPath>
+    </defs>
+  </svg>
+);
