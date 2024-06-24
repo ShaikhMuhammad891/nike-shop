@@ -13,7 +13,7 @@ const Featured = () => {
             <p className=" font-helvetica font-medium text-[54px] leading-[60px] text-center">STEP INTO WHAT FEELS GOOD</p>
             <p className=" mt-[24px] font-helvetica text-[15px] leading-[24px] text-center">Cause everyone should know the feeling of running in that perfect pair.</p>
             <div className=" flex justify-center mt-[30px]">
-            <Button title = "Find Your Shoe" />
+            <Button title = "Find Your Shoe" bgcolor = "#111111" color = "#ffffff" />
 
             </div>
         </div>

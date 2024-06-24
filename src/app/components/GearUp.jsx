@@ -180,20 +180,7 @@ const GearUp = () => {
           <img src="/images/dont-miss.png" alt="" className=" mt-[25px]" />
         </div>
       </div>
-      <div className=" mt-[48px]">
-        <p className=" font-helvetica font-medium text-[54px] leading-[60px] text-center">
-          FLIGHT ESSENTIALS
-        </p>
-        <p className=" mt-[24px] font-helvetica text-[15px] leading-[24px] text-center">
-          Your built-to-last, all-week wears—but with style only Jordan Brand
-          can deliver.
-        </p>
-        <div className=" flex justify-center mt-[30px]">
-          <Button title="Shop" />
-        </div>
-      </div>
-
-      
+     
     </>
   );
 };

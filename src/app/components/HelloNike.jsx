@@ -34,8 +34,8 @@ const HelloNike = () => {
           </p>
         </div>
         <div className=" flex justify-center gap-[6px] mt-[30px]">
-        <Button title="Notify Me" />
-        <Button title="Shop Air Max" />
+        <Button title="Notify Me" bgcolor = "#111111" color = "#ffffff"  />
+        <Button title="Shop Air Max" bgcolor = "#111111" color = "#ffffff" />
         </div>
       
       </div>
