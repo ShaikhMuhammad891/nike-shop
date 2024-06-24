@@ -30,3 +30,45 @@ export const ShoeSwiper = [
     gender: "Men's shoes",
   },
 ];
+
+export const LeftSwiper = [
+  {
+    img: "/images/left-one.png",
+    title: "Nike Dri-FIT ADV TechKnit Ultra",
+    price: 12.995,
+    gender: "Men's Short-Sleeve Running Top",
+  },
+  {
+    img: "/images/left-two.png",
+    title: "Nike Dri-FIT Challenger",
+    price: 14.995,
+    gender: "Men's 18cm (approx.) 2-in-1 Versatile Shorts",
+  },
+  {
+    img: "/images/left-one.png",
+    title: "Nike Dri-FIT ADV TechKnit Ultra",
+    price: 12.995,
+    gender: "Nike Dri-FIT ADV TechKnit Ultra",
+  },
+];
+
+export const RightSwiper = [
+  {
+    img: "/images/right-one.png",
+    title: "Nike Dri-FIT ADV TechKnit Ultra",
+    price: 12.995,
+    gender: "Nike Dri-FIT ADV TechKnit Ultra",
+  },
+  {
+    img: "/images/right-two.png",
+    title: "Nike Dri-FIT Challenger",
+    price: 14.995,
+    gender: "Men's 18cm (approx.) 2-in-1 Versatile Shorts",
+  },
+  {
+    img: "/images/right-one.png",
+    title: "Nike Dri-FIT ADV TechKnit Ultra",
+    price: 12.995,
+    gender: "Nike Dri-FIT ADV TechKnit Ultra",
+  },
+];

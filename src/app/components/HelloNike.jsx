@@ -24,7 +24,7 @@ const HelloNike = () => {
           First Look
         </p>
         <p className="  text-center text-[56px] leading-[60px] font-medium font-helvetica">
-          Nike Air Max Pulse
+          NIKE AIR MAX PULSE
         </p>
         <div className=" flex justify-center mt-[24px]">
           <p className=" max-w-[511px] text-center text-[15px] leading-[24px] font-normal font-helvetica ">
