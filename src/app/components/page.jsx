@@ -4,7 +4,7 @@ import LandingSwiper from "./LandingSwiper";
 import Featured from "./Featured";
 import GearUp from "./GearUp";
 import Essential from "./Essential";
-
+  
 const LandingPage = () => {
   return (
     <div>

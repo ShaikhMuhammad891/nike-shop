@@ -1,7 +1,10 @@
+"use client"
 import { Cart, Heart, Line, NikeLogo, SearchIcon } from "@/icons/logos";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
   return (
     <>
       <div className=" bg-[#F5F5F5] h-[36px] w-full flex items-center">
@@ -28,7 +31,9 @@ const Header = () => {
       </div>
 
       <div className=" max-w-[1343px] w-full mx-auto h-[60px] flex justify-between items-center relative">
-        <NikeLogo />
+        <button onClick={() => router.push("/")}>
+          <NikeLogo />
+        </button>
         <ul className=" flex gap-6 max-w-[760px] w-full absolute inset-0 mx-auto justify-center items-center">
           <li className=" text-[16px] text-[#111111] font-[500] leading-[24px] font-helvetica">
             New & Featured
@@ -62,8 +67,7 @@ const Header = () => {
           <Cart />
         </div>
       </div>
-      <div>
-      </div>
+      <div></div>
     </>
   );
 };

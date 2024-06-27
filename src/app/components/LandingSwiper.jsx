@@ -54,7 +54,6 @@ const LandingSwiper = () => {
           </p>
           <div className=" flex gap-[12.38px] items-center">
             <p className=" text-[15px] leading-[24px] font-helvetica font-medium">
-              {" "}
               Shop
             </p>
             <button

@@ -1,7 +1,8 @@
 const Button = (props) => {
-  const { title, color, bgcolor } = props;
+  const { title, color, bgcolor, onClick, border, borderColor } = props;
   return (
     <button
+      onClick={onClick}
       style={{
         background: bgcolor,
         color: color,
@@ -9,8 +10,9 @@ const Button = (props) => {
         fontSize: "15px",
         lineHeight: "24px",
         borderRadius: "30px",
+        borderColor: borderColor,
       }}
-      className=" font-helvetica"
+      className=" font-helvetica border"
     >
       {title}
     </button>
