@@ -1,24 +1,51 @@
 "use client";
-
 import React, { useState } from "react";
 import { FilterChange } from "@/icons/logos";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { clothingItems, shop } from "../../../utils/shop";
 import Button from "../../../utils/Button";
+import { useRouter } from "next/navigation";
+import { useShop } from "../../../context/ContextData";
 
 const ShopContent = () => {
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(["gender", "kids", "price"]);
+  const [selectedGenders, setSelectedGenders] = useState([]);
+  const { setSelectedItem } = useShop();
+  const router = useRouter();
 
   const toggleDropdown = (dropdown) => {
-    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+    setOpenDropdown((prevOpenDropdown) =>
+      prevOpenDropdown.includes(dropdown)
+        ? prevOpenDropdown.filter((item) => item !== dropdown)
+        : [...prevOpenDropdown, dropdown]
+    );
   };
 
-  const handleChange = (gender) => {};
+  const handleGenderChange = (gender) => {
+    setSelectedGenders((prevSelectedGenders) =>
+      prevSelectedGenders.includes(gender)
+        ? prevSelectedGenders.filter((g) => g !== gender)
+        : [...prevSelectedGenders, gender]
+    );
+  };
+
+  const filteredShopItems =
+    selectedGenders.length === 0
+      ? shop
+      : shop.filter((item) => selectedGenders.includes(item.gender));
+
+  const handleItemClick = (data) => {
+    router.push(`/selectedItem/${data.id}`);
+  };
   return (
     <div className="mt-[78px]">
       <div className="flex justify-between items-center">
         <p className="text-[24px] font-helvetica font-medium leading-[31.2px] text-[#111111]">
-          New (500)
+          New (
+          {filteredShopItems.length < 10
+            ? "0" + filteredShopItems.length
+            : filteredShopItems.length}
+          )
         </p>
         <div className="flex items-center gap-[32px]">
           <div className="flex items-center gap-[7.91px]">
@@ -51,7 +78,6 @@ const ShopContent = () => {
             ))}
           </ul>
           <hr />
-
           {/* Gender */}
           <div className="pb-[24px]">
             <div className="flex justify-between mt-[15px] items-center">
@@ -60,14 +86,14 @@ const ShopContent = () => {
                 className="cursor-pointer"
                 onClick={() => toggleDropdown("gender")}
               >
-                {openDropdown === "gender" ? (
+                {openDropdown.includes("gender") ? (
                   <RiArrowDropUpLine size={40} />
                 ) : (
                   <RiArrowDropDownLine size={40} />
                 )}
               </div>
             </div>
-            {openDropdown === "gender" && (
+            {openDropdown.includes("gender") && (
               <div className="mt-[10px]">
                 <div>
                   <input
@@ -75,7 +101,8 @@ const ShopContent = () => {
                     name="men"
                     id="men"
                     className="mr-2"
-                    onChange={() => handleChange("men")}
+                    checked={selectedGenders.includes("Men")}
+                    onChange={() => handleGenderChange("Men")}
                   />
                   <label htmlFor="men">Men</label>
                 </div>
@@ -85,18 +112,26 @@ const ShopContent = () => {
                     name="women"
                     id="women"
                     className="mr-2"
+                    checked={selectedGenders.includes("Women")}
+                    onChange={() => handleGenderChange("Women")}
                   />
                   <label htmlFor="women">Women</label>
                 </div>
                 <div>
-                  <input type="checkbox" name="kid" id="kid" className="mr-2" />
+                  <input
+                    type="checkbox"
+                    name="kid"
+                    id="kid"
+                    className="mr-2"
+                    checked={selectedGenders.includes("Kid")}
+                    onChange={() => handleGenderChange("Kid")}
+                  />
                   <label htmlFor="kid">Kid</label>
                 </div>
               </div>
             )}
           </div>
           <hr />
-
           {/* Kids */}
           <div className="pb-[24px]">
             <div className="flex justify-between mt-[15px] items-center">
@@ -105,14 +140,14 @@ const ShopContent = () => {
                 className="cursor-pointer"
                 onClick={() => toggleDropdown("kids")}
               >
-                {openDropdown === "kids" ? (
+                {openDropdown.includes("kids") ? (
                   <RiArrowDropUpLine size={40} />
                 ) : (
                   <RiArrowDropDownLine size={40} />
                 )}
               </div>
             </div>
-            {openDropdown === "kids" && (
+            {openDropdown.includes("kids") && (
               <div className="mt-[10px]">
                 <div>
                   <input
@@ -136,7 +171,6 @@ const ShopContent = () => {
             )}
           </div>
           <hr />
-
           {/* Price */}
           <div className="pb-[24px]">
             <div className="flex justify-between mt-[15px] items-center">
@@ -147,14 +181,14 @@ const ShopContent = () => {
                 className="cursor-pointer"
                 onClick={() => toggleDropdown("price")}
               >
-                {openDropdown === "price" ? (
+                {openDropdown.includes("price") ? (
                   <RiArrowDropUpLine size={40} />
                 ) : (
                   <RiArrowDropDownLine size={40} />
                 )}
               </div>
             </div>
-            {openDropdown === "price" && (
+            {openDropdown.includes("price") && (
               <div className="mt-[10px]">
                 <div>
                   <input
@@ -181,8 +215,12 @@ const ShopContent = () => {
         </div>
         <div>
           <div className="grid grid-cols-3 max-w-[1092px] gap-[16px] mb-[55px]">
-            {shop.map((data, index) => (
-              <div key={index}>
+            {filteredShopItems.map((data, index) => (
+              <div
+                key={index}
+                onClick={() => handleItemClick(data)}
+                className="cursor-pointer"
+              >
                 <img src={data.img} alt="" className="w-[348px] h-[348px]" />
                 <p className="text-[#9E3500] font-helvetica font-medium text-[15px] leading-[28px] mt-[9px]">
                   {data.material}
@@ -191,7 +229,7 @@ const ShopContent = () => {
                   {data.title}
                 </p>
                 <p className="text-[#757575] font-helvetica font-normal text-[15px] leading-[24px]">
-                  {data.gender}
+                  {data.genderWear}
                 </p>
                 <p className="text-[#757575] font-helvetica font-normal text-[15px] leading-[24px] mt-[5px]">
                   {data.color} Colour

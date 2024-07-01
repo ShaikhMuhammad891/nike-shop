@@ -2,6 +2,7 @@ import "./globals.css";
 import { helvetica } from "../../utils/fonts";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
+import { ShopProvider } from "../../context/ContextData";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,10 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${helvetica.variable}`}>
-        <Header />
-        {children}
-        <Footer />
+      <body className={`${helvetica.variable} font-helvetica`}>
+        <ShopProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ShopProvider>
       </body>
     </html>
   );

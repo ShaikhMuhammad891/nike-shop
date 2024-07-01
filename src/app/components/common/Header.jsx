@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Cart, Heart, Line, NikeLogo, SearchIcon } from "@/icons/logos";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -11,21 +11,30 @@ const Header = () => {
         <div className=" max-w-[1343px] w-full mx-auto flex justify-between items-center ">
           <Image src="/images/header-person.png" width={24} height={24} />
           <ul className=" flex gap-[15px] items-center">
-            <li className=" text-[11px] font-[500] leading-[14px] ">
+            <li className=" text-[11px] font-[500] leading-[14px] cursor-pointer ">
               Find store
             </li>
             <li>
               <Line />
             </li>
-            <li className=" text-[11px] font-[500] leading-[14px] ">Help</li>
+            <li className=" text-[11px] font-[500] leading-[14px] cursor-pointer ">
+              Help
+            </li>
             <li>
               <Line />
             </li>
-            <li className=" text-[11px] font-[500] leading-[14px] ">Join Us</li>
+            <li className=" text-[11px] font-[500] leading-[14px] cursor-pointer ">
+              Join Us
+            </li>
             <li>
               <Line />
             </li>
-            <li className=" text-[11px] font-[500] leading-[14px] ">Sign In</li>
+            <li
+              onClick={() => router.push("/signin")}
+              className=" text-[11px] font-[500] leading-[14px] cursor-pointer "
+            >
+              Sign In
+            </li>
           </ul>
         </div>
       </div>
