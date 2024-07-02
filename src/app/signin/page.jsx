@@ -44,9 +44,9 @@ const Signin = () => {
         </p>
       </div>
       <p className=" max-w-[280px] mx-auto text-center mt-[25px] text-[12px] leading-[16px] font-normal text-[#8D8D8D]">
-        By logging in, you agree to Nike's{" "}
-        <span className=" underline">Privacy Policy</span> and{" "}
-        <span className=" underline">Terms of Use</span>.
+        By logging in, you agree to Nike's
+        <span className=" border-b border-b-[#8D8D8D]">Privacy Policy</span> and
+        <span className=" border-b border-b-[#8D8D8D]">Terms of Use</span>.
       </p>
       <button className=" mt-[30px] w-full bg-black text-white text-[11px] leading-[17px] flex items-center justify-center py-[11px] rounded-[3px]">
         SIGN IN
@@ -54,7 +54,7 @@ const Signin = () => {
       <p className=" mt-[20px] mb-[80px] text-[12px] leading-[14px] text-center mx-auto font-normal text-[#8D8D8D]">
         Not a Member?{" "}
         <span
-          className=" text-black underline cursor-pointer"
+          className=" text-black border-b border-b-black cursor-pointer"
           onClick={() => router.push("/signup")}
         >
           Join Us.
