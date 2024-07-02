@@ -5,7 +5,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-	width: 7px;
+    width: 7px;
 }
 
 /* Track */
@@ -17,10 +17,20 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
-	border-radius: 7px;
+    border-radius: 7px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: #555;
+    background: #555;
 }
+
+.custom-input:focus {
+    border-width: 2px;
+    /* Border width on focus */
+    border-color: black;
+    /* Border color on focus */
+    outline: none;
+    /* Remove default outline */
+}
+

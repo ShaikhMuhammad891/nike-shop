@@ -1,7 +1,10 @@
+"use client";
 import { NikeLogo } from "@/icons/logos";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Signin = () => {
+  const router = useRouter();
   return (
     <form className=" max-w-[324px] w-full mx-auto mt-[28px]">
       <div className=" flex justify-center">
@@ -49,7 +52,13 @@ const Signin = () => {
         SIGN IN
       </button>
       <p className=" mt-[20px] mb-[80px] text-[12px] leading-[14px] text-center mx-auto font-normal text-[#8D8D8D]">
-        Not a Member? <span className=" text-black underline">Join Us.</span>
+        Not a Member?{" "}
+        <span
+          className=" text-black underline cursor-pointer"
+          onClick={() => router.push("/signup")}
+        >
+          Join Us.
+        </span>
       </p>
     </form>
   );
