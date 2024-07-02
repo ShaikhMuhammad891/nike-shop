@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { ShoeSize } from "../../../utils/shop"; // Assuming this imports your shoe size data
-import Button from "../../../utils/Button";
+import Button from "../components/common/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles

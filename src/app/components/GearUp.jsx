@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 import { LeftSwiper, RightSwiper } from "../../../utils/SwiperContent";
-import Button from "../../../utils/Button";
+import Button from "./common/Button";
 
 const GearUp = () => {
   const [activeIndex, setActiveIndex] = useState(0);

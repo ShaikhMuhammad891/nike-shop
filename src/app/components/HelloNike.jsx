@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "../../../utils/Button";
+import Button from "./common/Button";
 
 const HelloNike = () => {
   return (

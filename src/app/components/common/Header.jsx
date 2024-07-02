@@ -11,7 +11,10 @@ const Header = () => {
         <div className=" max-w-[1343px] w-full mx-auto flex justify-between items-center ">
           <Image src="/images/header-person.png" width={24} height={24} />
           <ul className=" flex gap-[15px] items-center">
-            <li className=" text-[11px] font-[500] leading-[14px] cursor-pointer ">
+            <li
+              className=" text-[11px] font-[500] leading-[14px] cursor-pointer"
+              onClick={() => router.push("/store")}
+            >
               Find store
             </li>
             <li>
@@ -23,7 +26,10 @@ const Header = () => {
             <li>
               <Line />
             </li>
-            <li className=" text-[11px] font-[500] leading-[14px] cursor-pointer ">
+            <li
+              className=" text-[11px] font-[500] leading-[14px] cursor-pointer "
+              onClick={() => router.push("/join")}
+            >
               Join Us
             </li>
             <li>

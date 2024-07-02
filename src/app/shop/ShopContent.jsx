@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FilterChange } from "@/icons/logos";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { clothingItems, shop } from "../../../utils/shop";
-import Button from "../../../utils/Button";
+import Button from "../components/common/Button";
 import { useRouter } from "next/navigation";
 import { useShop } from "../../../context/ContextData";
 
