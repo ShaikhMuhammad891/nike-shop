@@ -1,19 +1,12 @@
 "use client";
-
 import React, { useRef, useState } from "react";
 import { ShoeSize } from "../../../utils/shop"; // Assuming this imports your shoe size data
-import Button from "../components/common/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-
-// import "./styles.css";
-
-// import required modules
 import { Navigation } from "swiper/modules";
 import { ShoeSwiper } from "../../../utils/SwiperContent";
+import { useRouter } from "next/navigation";
 
 const OpenItem = (props) => {
   const { openData } = props;
@@ -22,6 +15,9 @@ const OpenItem = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isClickedNext, setIsClickedNext] = useState(false);
   const [isClickedPrev, setIsClickedPrev] = useState(false);
+  const [isClicked, setIsClicked] = useState("");
+
+  const router = useRouter();
 
   const SlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
@@ -53,19 +49,19 @@ const OpenItem = (props) => {
 
   const handleSizeClick = (size) => {
     setSelectedSize(size);
+    console.log();
   };
+
+  // const changeColor = (bagOrFav) => {
+  //   setIsClicked(bagOrFav);
+  // };
 
   return (
     <>
       <div className="mt-[104px]">
         <div className="flex gap-[20px]">
-          <div className="flex flex-wrap max-w-[903px] gap-[12px]">
-            <img src="/images/show-1.png" alt="" />
-            <img src="/images/show-2.png" alt="" />
-            <img src="/images/show-3.png" alt="" />
-            <img src="/images/show-4.png" alt="" />
-            <img src="/images/show-5.png" alt="" />
-            <img src="/images/show-6.png" alt="" />
+          <div className="flex flex-wrap max-w-[903px] w-full gap-[12px]">
+            <img src={openData.img} alt="" className=" h-[400px]" />
           </div>
           <div className="max-w-[376px] mt-[8px]">
             <p className="text-[27px] leading-[33.6px] font-helvetica font-medium">
@@ -96,7 +92,7 @@ const OpenItem = (props) => {
               </div>
               <div className="mt-[8px] flex flex-wrap gap-[7px]">
                 {/* Mapping through shoe sizes */}
-                {ShoeSize.map((shoe, index) => (
+                {openData?.sizes?.map((shoe, index) => (
                   <div key={index}>
                     <button
                       className={`border w-[120.67px] h-[48px] rounded-[4px] ${
@@ -112,13 +108,21 @@ const OpenItem = (props) => {
 
               <div>
                 <button
-                  className={`text-[#111111] border border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] `}
+                  onClick={() => {
+                    setIsClicked("bag");
+                    router.push(`/cart/${openData.id}`);
+                  }}
+                  className={`text-[#111111] border border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
+                    isClicked === "bag" ? "bg-black text-white" : ""
+                  }`}
                 >
                   Add to Bag
                 </button>
                 <button
-                  // onClick={handleChooseClick("favourite")}
-                  className={`text-[#111111] border border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] `}
+                  onClick={() => setIsClicked("fav")}
+                  className={`text-[#111111] border border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
+                    isClicked === "fav" && " bg-black text-white"
+                  } `}
                 >
                   Add to Favourites
                 </button>
@@ -143,17 +147,17 @@ const OpenItem = (props) => {
           <p className=" text-center font-[400] leading-[32px] text-[19px]">
             Explore the {openData.title}
           </p>
-          <img className=" mt-[65px]" src={openData?.display1} alt="" />
+          <img className=" mt-[65px]" src="/images/boy-1.png" alt="" />
           <p className=" text-center font-[400] leading-[32px] text-[19px] mt-[72px] max-w-[648px] mx-auto">
             Originally designed for performance running, the full-length Max Air
             unit adds soft cushioning.
           </p>
-          <img className=" mt-[65px]" src={openData?.display2} alt="" />
+          <img className=" mt-[65px]" src="/images/boy-2.png" alt="" />
           <p className=" text-center font-[400] leading-[32px] text-[19px] mt-[72px] max-w-[648px] mx-auto">
             Originally designed for performance running, the full-length Max Air
             unit adds soft cushioning.
           </p>{" "}
-          <img className=" mt-[65px]" src={openData?.display3} alt="" />
+          <img className=" mt-[65px]" src="/images/boy-3.png" alt="" />
           <p className=" text-center font-[400] leading-[32px] text-[19px] mt-[72px] max-w-[648px] mx-auto">
             Originally designed for performance running, the full-length Max Air
             unit adds soft cushioning.

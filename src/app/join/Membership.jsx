@@ -1,8 +1,11 @@
+"use client";
 import React from "react";
 import Button from "../components/common/Button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Membership = () => {
+  const router = useRouter();
   return (
     <div>
       <p className=" mt-[35px] text-[23px] leading-[42px] font-medium">
@@ -20,7 +23,12 @@ const Membership = () => {
           offers. And it's all free.
         </p>
         <div className=" flex justify-center mt-[30px]">
-          <Button title="Join Us" bgcolor="black" color="white" />
+          <Button
+            title="Join Us"
+            bgcolor="black"
+            color="white"
+            onClick={() => router.push("/signup")}
+          />
         </div>
       </div>
       <div className=" w-[1344px] mt-[84px] h-[910px] bg-[#F5F5F5] flex justify-center" />

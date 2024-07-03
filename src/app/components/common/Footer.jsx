@@ -1,7 +1,9 @@
-import { LocationLogo, TwitterLogo } from "@/icons/logos";
+"use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Footer = () => {
+  const router = useRouter();
   return (
     <>
       <div className=" bg-[#111111] w-full pt-[40px] pb-[18px]">
@@ -29,26 +31,29 @@ const Footer = () => {
               </div>
 
               <div className=" max-w-[245.25px] w-full">
-                <p className=" text-[10px] text-[#FFFFFF] font-helvetica font-normal leading-[24px] ">
+                <p className=" text-[10px] text-[#FFFFFF] font-helvetica font-normal leading-[24px] cursor-pointer ">
                   GET HELP
                 </p>
                 <ul>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] ">
+                  <li
+                    className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer "
+                    onClick={() => router.push("/order")}
+                  >
                     Order Status
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] ">
+                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
                     Delivery
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] ">
+                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
                     Returns
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] ">
+                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
                     Payment Options
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] ">
+                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
                     Contact Us On Nike.com Inquiries
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] ">
+                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
                     Contact Us On All Other Inquiries
                   </li>
                 </ul>

@@ -55,7 +55,7 @@ const Signin = () => {
         Not a Member?{" "}
         <span
           className=" text-black border-b border-b-black cursor-pointer"
-          onClick={() => router.push("/signup")}
+          onClick={() => router.push("/join")}
         >
           Join Us.
         </span>
