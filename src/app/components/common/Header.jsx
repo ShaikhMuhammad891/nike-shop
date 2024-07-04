@@ -55,24 +55,24 @@ const Header = () => {
         </button>
         <ul className=" flex gap-6 max-w-[760px] w-full absolute inset-0 mx-auto justify-center items-center">
           <li
-            className=" text-[16px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer"
+            className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer"
             onClick={() => router.push("/shop")}
           >
             New & Featured
           </li>
-          <li className=" text-[16px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
             Men
           </li>
-          <li className=" text-[16px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
             Women
           </li>
-          <li className=" text-[16px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer ">
+          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer ">
             Kids
           </li>
-          <li className=" text-[16px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
             Sale
           </li>
-          <li className=" text-[16px] text-[#111111] font-[500] leading-[24px] font-helvetica">
+          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica">
             SNKRS
           </li>
         </ul>
