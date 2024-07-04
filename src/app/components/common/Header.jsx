@@ -1,13 +1,14 @@
 "use client";
 import { Cart, Heart, Line, NikeLogo, SearchIcon } from "@/icons/logos";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const router = useRouter();
+  const pathname = usePathname();
   return (
-    <>
-      <div className=" bg-[#F5F5F5] h-[36px] w-full flex items-center">
+    <div className={`${pathname === "/delivery" && "hidden"}`}>
+      <div className={`bg-[#F5F5F5] h-[36px] w-full flex items-center `}>
         <div className=" max-w-[1343px] w-full mx-auto flex justify-between items-center ">
           <Image src="/images/header-person.png" width={24} height={24} />
           <ul className=" flex gap-[15px] items-center">
@@ -89,7 +90,7 @@ const Header = () => {
         </div>
       </div>
       <div></div>
-    </>
+    </div>
   );
 };
 

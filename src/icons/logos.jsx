@@ -256,3 +256,76 @@ export const DeleteLogo = (props) => (
     />
   </svg>
 );
+
+export const DeliverLogo = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={25}
+    height={22}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#111"
+      stroke="#111"
+      strokeLinejoin="round"
+      strokeWidth={0.692}
+      d="m23.454 8.92-2.647-7.507H4.192L1.607 8.736v11.692h21.847V8.92ZM4.869 2.336h15.262l2.153 6.092H2.715L4.87 2.336Zm17.6 17.23H2.53V9.351h20l-.061 10.215Z"
+    />
+    <path
+      fill="#111"
+      d="m16.19 12.058-.093-.099a.692.692 0 0 0-.988-.023l-3.96 3.849-1.258-1.224a.692.692 0 0 0-.989.023l-.092.1a.692.692 0 0 0 .023.969l1.834 1.783a.692.692 0 0 0 .965 0l4.535-4.409a.692.692 0 0 0 .023-.969Z"
+    />
+    <path
+      fill="#D8D8D8"
+      stroke="#000"
+      strokeWidth={0.923}
+      d="M12.962 2.49h-.923v5.538h.923V2.49Z"
+    />
+  </svg>
+);
+
+export const DeliverySMS = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={20}
+    height={21}
+    fill="none"
+    {...props}
+  >
+    <g clipPath="url(#a)">
+      <g clipPath="url(#b)">
+        <path fill="#fff" d="M20 .797H0v20h20v-20Z" />
+        <path
+          stroke="#000"
+          strokeWidth={1.625}
+          d="M14.27 16.422h2.168a2.438 2.438 0 0 0 2.437-2.438v-9.75a2.438 2.438 0 0 0-2.438-2.437h-13A2.438 2.438 0 0 0 1 4.234v9.75a2.438 2.438 0 0 0 2.438 2.438h6.5a2.438 2.438 0 0 1 2.437 2.437v1.625M13.188 11.547H5.062M14.813 6.672h-9.75"
+        />
+      </g>
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" d="M0 .797h20v20H0z" />
+      </clipPath>
+      <clipPath id="b">
+        <path fill="#fff" d="M0 .797h20v20H0z" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
+
+export const DeliveryLock = (props)=>(
+  <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={20}
+  height={20}
+  fill="none"
+  {...props}
+>
+  <path
+    fill="#111"
+    d="M2 7.39v8.5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.5H2Zm8-7a6.002 6.002 0 0 1 5.917 5H18a2 2 0 0 1 2 2v8.5a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-8.5a2 2 0 0 1 2-2h2.083A6.002 6.002 0 0 1 10 .39Zm0 2a4.002 4.002 0 0 0-3.874 3h7.748a4.002 4.002 0 0 0-3.874-3Z"
+  />
+</svg>
+)

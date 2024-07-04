@@ -1,12 +1,17 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const Footer = () => {
   const router = useRouter();
+  const pathname = usePathname();
   return (
     <>
-      <div className=" bg-[#111111] w-full pt-[40px] pb-[18px]">
+      <div
+        className={` bg-[#111111] w-full pt-[40px] pb-[18px] ${
+          pathname === "/delivery" && "hidden"
+        }`}
+      >
         <div className=" max-w-[1372px] mx-auto">
           <div className="  flex justify-between">
             <div className="  grid grid-cols-3 gap-[12px] max-w-[760px] w-full">
@@ -41,7 +46,10 @@ const Footer = () => {
                   >
                     Order Status
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
+                  <li
+                    className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer "
+                    onClick={() => router.push("/delivery")}
+                  >
                     Delivery
                   </li>
                   <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
@@ -114,16 +122,16 @@ const Footer = () => {
             </div>
             <div>
               <ul className=" flex gap-[27.8px]">
-                <li className=" text-[#7E7E7E] font-helvetica font-normal text-[12px]">
+                <li className="  cursor-pointer text-[#7E7E7E] font-helvetica font-normal text-[12px]">
                   Guides
                 </li>
-                <li className=" text-[#7E7E7E] font-helvetica font-normal text-[12px]">
+                <li className="  cursor-pointer text-[#7E7E7E] font-helvetica font-normal text-[12px]">
                   Terms of Sale
                 </li>
-                <li className=" text-[#7E7E7E] font-helvetica font-normal text-[12px]">
+                <li className="  cursor-pointer text-[#7E7E7E] font-helvetica font-normal text-[12px]">
                   Terms of Use
                 </li>
-                <li className=" text-[#7E7E7E] font-helvetica font-normal text-[12px]">
+                <li className="  cursor-pointer text-[#7E7E7E] font-helvetica font-normal text-[12px]">
                   Nike Privacy Policy
                 </li>
               </ul>
