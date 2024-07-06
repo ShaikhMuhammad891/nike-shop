@@ -47,8 +47,8 @@ const LandingSwiper = () => {
   };
   return (
     <>
-      <div className=" mt-[84px] max-w-[1344px] w-full mx-auto">
-        <div className=" flex justify-between">
+      <div className=" mt-[84px] max-w-[1344px] w-full mx-auto mb-[30px]">
+        <div className=" flex justify-between items-center">
           <p className=" text-[22px] leading-[28px] font-helvetica font-medium">
             Best of Air Max
           </p>
@@ -82,10 +82,11 @@ const LandingSwiper = () => {
             modules={[Navigation]}
             slidesPerView={3}
             spaceBetween={12}
+            className=""
           >
             {ShoeSwiper.map((data, index) => (
               <SwiperSlide key={index}>
-                <div>
+                <div className=" mb-[30px]">
                   <img src={data.img} alt="" />
                   <div className="mt-[21px] flex justify-between">
                     <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px]">

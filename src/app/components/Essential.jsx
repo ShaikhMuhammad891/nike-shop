@@ -12,9 +12,9 @@ const Essential = () => {
   };
   return (
     <>
-      <div className=" max-w-[1344px] mx-auto">
+      <div className=" max-w-[1344px] mx-auto mb-[56px] pb-[16px]">
         <div className=" mt-[48px]">
-          <p className=" font-helvetica font-medium text-[54px] leading-[60px] text-center">
+          <p className=" font-helvetica font-medium text-[52px] leading-[60px] text-center">
             FLIGHT ESSENTIALS
           </p>
           <p className=" mt-[24px] font-helvetica text-[15px] leading-[24px] text-center">
@@ -44,19 +44,19 @@ const Essential = () => {
           <div className=" relative">
             <img src="/images/essential-two.png" alt="" />
             <div className=" absolute bottom-12 left-10">
-              <Button title="Men's" bgcolor="#ffffff" />
+              <Button title="Women's" bgcolor="#ffffff" />
             </div>
           </div>
           <div className=" relative">
             <img src="/images/essential-three.png" alt="" />
             <div className=" absolute bottom-12 left-10">
-              <Button title="Men's" bgcolor="#ffffff" />
+              <Button title="Kid's" bgcolor="#ffffff" />
             </div>
           </div>
         </div>
 
-        <div className=" mt-[87px] flex max-w-[880px] mx-auto justify-between">
-          <div>
+        <div className=" mt-[87px] flex max-w-[880px] w-full mx-auto justify-between">
+          <div className=" max-w-[184px] w-full">
             <p className=" font-helvetica text-[15px] leading-[24px]">Icons</p>
             <ul className=" mt-[24px] space-y-[16px]">
               <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
@@ -73,7 +73,7 @@ const Essential = () => {
               </li>
             </ul>
           </div>
-          <div>
+          <div className=" max-w-[184px] w-full">
             <p className=" font-helvetica text-[15px] leading-[24px]">Shoes</p>
             <ul className=" mt-[24px] space-y-[16px]">
               <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
@@ -90,7 +90,7 @@ const Essential = () => {
               </li>
             </ul>
           </div>
-          <div>
+          <div className=" max-w-[184px] w-full">
             <p className=" font-helvetica text-[15px] leading-[24px]">
               Clothing
             </p>
@@ -109,7 +109,7 @@ const Essential = () => {
               </li>
             </ul>
           </div>
-          <div>
+          <div className=" max-w-[184px] w-full">
             <p className=" font-helvetica text-[15px] leading-[24px]">Kids'</p>
             <ul className=" mt-[24px] space-y-[16px]">
               <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">

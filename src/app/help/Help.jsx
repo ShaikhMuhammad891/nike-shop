@@ -5,7 +5,7 @@ import Button from "../components/common/Button";
 const Help = () => {
   return (
     <>
-      <div className=" mt-[44px] mb-[20px]">
+      <div className=" mt-[48px] mb-[20px]">
         <p className=" flex justify-center text-[32px] leading-[36px] font-medium">
           GET HELP
         </p>
@@ -13,14 +13,14 @@ const Help = () => {
           <div className=" flex justify-between border border-[#757575] rounded-[8px] py-[19px] px-[12px]  ">
             <input
               type="text"
-              placeholder="What can we help you with"
-              className=" outline-none"
+              placeholder="What can we help you with?"
+              className=" outline-none max-w-[400px] w-full"
             />
             <SearchIcon />
           </div>
         </div>
       </div>
-      <div className=" flex mt-[28px]">
+      <div className=" flex mt-[28px] gap-[48px] max-w-[1309px] mx-auto">
         <div className=" max-w-[939.75px] w-full  border-r border-r-[#CCCCCC] ">
           <p className=" text-[28px] leading-[32px] font-medium">
             WHAT PAYMENT OPTIONS CAN I USE ON NIKE ORDERS?
@@ -40,12 +40,13 @@ const Help = () => {
           <p className=" mt-[23px] ml-[32px] text-[15px] leading-[28px]">
             Apple Pay
           </p>
-          <p className=" mt-[26px] text-[16px] leading-[28px] font-normal">
+          <p className=" mt-[26px] text-[16px] leading-[28px] font-normal max-w-[894.33px] w-full">
             <span className=" underline font-medium cursor-pointer">
               Nike Members
             </span>{" "}
             can store multiple debit or credit cards in their profile for faster
-            checkout. If you're not already a Member, join us today.
+            checkout. If you're not already a Member,{" "}
+            <span className=" underline">join us</span> today.
           </p>
 
           <div className=" mt-[16px] flex gap-[16px]">
@@ -64,9 +65,18 @@ const Help = () => {
                   <p className=" text-[16px] leading-[28px] font-bold">
                     {ask.question}
                   </p>
-                  <p className=" max-w-[922px] text-[16px] leading-[28px]">
-                    {ask.answer}
-                  </p>
+
+                  {ask.answer}
+                  <p className=" text-[15px] leading-7 ">{ask.note}</p>
+                  {index === 0 && (
+                    <p className=" mt-[21px] text-[15px] leading-7">
+                      Please note, some banks may charge{" "}
+                      <span className=" underline text-[15px] font-medium">
+                        a small transaction fee
+                      </span>{" "}
+                      fee for international orders.
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -83,9 +93,9 @@ const Help = () => {
             </div>
 
             {/* related */}
-            <div>
+            <div className=" pb-[20px] mb-[28px]">
               <p className=" mt-[20px] text-[#757575] text-[16px] leading-[24px] font-medium">
-                Related
+                RELATED
               </p>
               <p className=" mt-[25px] text-[16px] leading-[28px] font-medium ml-[32px] underline cursor-pointer">
                 WHAT ARE NIKE'S DELIVERY OPTIONS?
@@ -96,7 +106,7 @@ const Help = () => {
             </div>
           </div>
         </div>
-        <div className=" max-w-[313.25px] w-full flex items-center flex-col">
+        <div className=" max-w-[265.25px] w-full flex items-center flex-col">
           <p className="  text-[28px] leading-[32px] font-medium">CONTACT US</p>
           <div className=" mt-[34px]">
             {contacts.map((data, index) => (
@@ -107,11 +117,12 @@ const Help = () => {
                 <div>
                   <img src={data.img} alt="" />
                 </div>
-                <p className=" text-center mt-[29px] text-[16px] leading-[24px] font-medium">
-                  {data.title}
+                <p className=" mt-[29px]">{data.title}</p>
+                <p className=" text-center text-[16px] leading-[24px] font-normal">
+                  {data.description1}
                 </p>
                 <p className=" text-center text-[16px] leading-[24px]">
-                  {data.description1}
+                  {data.description2}
                 </p>
               </div>
             ))}
@@ -128,7 +139,7 @@ const faqs = [
   {
     question: "Does my card need international purchases enabled?",
     answer:
-      "Yes, we recommend asking your bank to enable international purchases on your card. You will be notified at checkout if international purchases need to be enabled. Please note, some banks may charge a small transaction fee for international orders.",
+      "Yes, we recommend asking your bank to enable international purchases on your card. You will be notified at checkout if international purchases need to be enabled.",
   },
   {
     question: "Can I pay for my order with multiple methods?",
@@ -151,9 +162,9 @@ const contacts = [
     img: "/images/phone.png",
     title: "000 800 919 0566",
     description1:
-      "Products & Orders: 24 hours a day, 7 days a week Company Info & Enquiries: 07:30 - 16:30, Monday - Friday",
+      "Products & Orders: 24 hours a day, 7 days a week ",
     description2:
-      " Products & Orders: 24 hours a day, 7 days a week Company Info & Enquiries: 07:30 - 16:30, Monday - Friday",
+      "Company Info & Enquiries: 07:30 - 16:30, Monday - Friday",
   },
   {
     img: "/images/chat.png",

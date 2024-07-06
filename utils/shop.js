@@ -300,7 +300,7 @@ export const shop = [
     title: "Nike Air Zoom Pegasus 38",
     genderWear: "Women's Shoes",
     gender: "Women",
-  
+
     color: 1,
     price: 22.0,
   },
@@ -329,8 +329,7 @@ export const clothingItems = [
   "Jumpsuits & Rompers",
   "Skirts & Dresses",
   "Socks",
-  "Accessories",
-  "& Equipment",
+  "Accessories & Equipment",
 ];
 
 export const ShoeSize = [

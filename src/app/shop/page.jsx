@@ -3,7 +3,7 @@ import ShopContent from './ShopContent'
 
 const Shop = () => {
   return (
-    <div className=' max-w-[1344px] mx-auto'><ShopContent /></div>
+    <div className=' max-w-[1440px] mx-auto'><ShopContent /></div>
   )
 }
 

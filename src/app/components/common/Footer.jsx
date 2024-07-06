@@ -8,86 +8,86 @@ const Footer = () => {
   return (
     <>
       <div
-        className={` bg-[#111111] w-full pt-[40px] pb-[18px] ${
+        className={` bg-[#111111] w-full pt-[40px] pb-[15px] ${
           pathname === "/delivery" && "hidden"
         }`}
       >
         <div className=" max-w-[1372px] mx-auto">
           <div className="  flex justify-between">
-            <div className="  grid grid-cols-3 gap-[12px] max-w-[760px] w-full">
+            <div className="  grid grid-cols-3 gap-[12px] max-w-[759.75px] w-full h-[213px]">
               <div className=" max-w-[245.25px] w-full">
-                <p className=" text-[10px] leading-[32.67px] font-helvetica text-white">
+                <p className=" text-[10px] leading-[16px] font-inter text-[#FFFFFF] cursor-pointer">
                   FIND A STORE
                 </p>
-                <ul>
-                  <li className=" text-[10px] leading-[32.67px] font-helvetica text-white font-normal">
+                <ul className=" mt-[19.66px] space-y-[19.66px]">
+                  <li className=" text-[10px] leading-[16px] font-helvetica text-[#FFFFFF] cursor-pointer font-normal">
                     Become A Member
                   </li>
-                  <li className=" text-[10px] leading-[32.67px] font-helvetica text-white font-normal">
+                  <li className=" text-[10px] leading-[16px] font-helvetica text-[#FFFFFF] cursor-pointer font-normal">
                     Sign Up for Email
                   </li>
-                  <li className=" text-[10px] leading-[32.67px] font-helvetica text-white font-normal">
+                  <li className=" text-[10px] leading-[16px] ml-[6px] font-helvetica text-[#FFFFFF] cursor-pointer font-normal">
                     Send Us Feedback
                   </li>
-                  <li className=" text-[10px] leading-[32.67px] font-helvetica text-white font-normal">
+                  <li className=" text-[10px] leading-[16px] font-helvetica text-[#FFFFFF] cursor-pointer font-normal">
                     Student Discounts
                   </li>
                 </ul>
               </div>
 
               <div className=" max-w-[245.25px] w-full">
-                <p className=" text-[10px] text-[#FFFFFF] font-helvetica font-normal leading-[24px] cursor-pointer ">
+                <p className=" text-[10px] tracking-[0.5px] text-[#FFFFFF] font-helvetica font-normal leading-[16px] cursor-pointer ">
                   GET HELP
                 </p>
-                <ul>
+                <ul className=" mt-[14px] space-y-[17px]">
                   <li
-                    className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer "
+                    className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px] cursor-pointer "
                     onClick={() => router.push("/order")}
                   >
                     Order Status
                   </li>
                   <li
-                    className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer "
+                    className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[14px] cursor-pointer "
                     onClick={() => router.push("/delivery")}
                   >
                     Delivery
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
+                  <li className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px] cursor-pointer ">
                     Returns
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
+                  <li className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px] cursor-pointer ">
                     Payment Options
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
+                  <li className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px] cursor-pointer ">
                     Contact Us On Nike.com Inquiries
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px] cursor-pointer ">
+                  <li className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px] cursor-pointer ">
                     Contact Us On All Other Inquiries
                   </li>
                 </ul>
               </div>
 
               <div className=" max-w-[245.25px] w-full">
-                <p className=" text-[10px] font-normal font-helvetica leading-[24px] text-[#FFFFFF] ">
+                <p className=" text-[10px] font-normal font-helvetica leading-[16px] tracking-[0.5px] text-[#FFFFFF] ">
                   ABOUT NIKE
                 </p>
-                <ul>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px]">
+                <ul className=" mt-[14px] space-y-[17px]">
+                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
                     News
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px]">
+                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
                     Careers
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px]">
+                  <li className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
                     Investors
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[28px]">
+                  <li className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
                     Sustainability
                   </li>
                 </ul>
               </div>
             </div>
-            <div className=" flex gap-[16px]">
+            <div className=" flex gap-[16px] mr-[6px]">
               <img
                 src="/images/twitter.png"
                 alt=""
@@ -113,7 +113,7 @@ const Footer = () => {
                 alt=""
                 className=" w-[9.38px] h-[13.12px]"
               />
-              <p className=" text-[#ffffff] font-helvetica font-normal text-[12px] ml-[12px]">
+              <p className=" text-[#ffffff] font-normal text-[12px] ml-[12px]">
                 India
               </p>
               <p className=" text-[#7E7E7E] text-[11px] ml-[16px]">
@@ -121,7 +121,7 @@ const Footer = () => {
               </p>
             </div>
             <div>
-              <ul className=" flex gap-[27.8px]">
+              <ul className=" flex gap-[27.8px] mr-[12px]">
                 <li className="  cursor-pointer text-[#7E7E7E] font-helvetica font-normal text-[12px]">
                   Guides
                 </li>

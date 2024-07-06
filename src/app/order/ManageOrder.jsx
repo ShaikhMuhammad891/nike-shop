@@ -34,7 +34,7 @@ const ManageOrder = () => {
           Submit
         </button>
 
-        <div className=" mt-[26px] flex justify-center">
+        <div className=" mt-[26px] flex justify-center items-center">
           <p className=" text-[14px] leading-5">Already a member?</p>
           <p
             className=" text-[15px] font-medium leading-6 cursor-pointer"

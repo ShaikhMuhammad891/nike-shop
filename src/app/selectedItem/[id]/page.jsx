@@ -7,7 +7,7 @@ const SelectedItems = ({ params }) => {
   openData.sizes = ShoeSize
 
   return (
-    <div className=" max-w-[1344px] mx-auto">
+    <div className=" ">
       <OpenItem openData={openData} />
     </div>
   );

@@ -294,7 +294,8 @@ export const customStyles = {
   control: (provided, state) => ({
     ...provided,
     width: "full",
-    padding: "6px",
+    marginTop : "14px",
+    padding: "9px",
     borderColor: state.isFocused ? "black" : provided.borderColor,
     boxShadow: state.isFocused ? "0 0 0 1px black" : provided.boxShadow,
     "&:hover": {

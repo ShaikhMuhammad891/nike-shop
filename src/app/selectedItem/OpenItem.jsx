@@ -58,25 +58,26 @@ const OpenItem = (props) => {
 
   return (
     <>
-      <div className="mt-[104px]">
-        <div className="flex gap-[20px]">
-          <div className="flex flex-wrap max-w-[903px] w-full gap-[12px]">
-            <img src={openData.img} alt="" className=" h-[400px]" />
+      <div className="mt-[104px] ">
+        <div className="flex gap-[72px] max-w-[1299px] mx-auto ">
+          <div className="flex flex-wrap max-w-[851px] w-full gap-[12px]">
+            <img src={openData.img} alt="" className=" h-[400px] w-[419.5px]" />
+            <img src={openData.img} alt="" className=" h-[400px] w-[419.5px]" />
           </div>
           <div className="max-w-[376px] mt-[8px]">
-            <p className="text-[27px] leading-[33.6px] font-helvetica font-medium">
+            <p className="text-[27px] leading-[33.6px] font-inter font-medium">
               {openData?.title}
             </p>
-            <p className="text-[15px] font-helvetica font-medium leading-[24px] mt-[1.5px]">
+            <p className="text-[15px] font-inter font-medium leading-[24px] mt-[1.5px]">
               {openData?.genderWear}
             </p>
-            <p className="text-[15px] font-helvetica font-medium leading-[24px] mt-[1.5px]">
+            <p className="text-[15px] font-inter font-medium leading-[24px] mt-[1.5px]">
               MRP : $ {openData?.price}
             </p>
-            <p className="text-[15px] font-helvetica font-medium leading-[24px] text-[#757575] mt-[2px]">
+            <p className="text-[15px] font-inter font-medium leading-[24px] text-[#757575] mt-[2px]">
               incl. of taxes
             </p>
-            <p className="text-[15px] font-helvetica font-medium leading-[24px] text-[#757575] mt-[2px] mb-[40px]">
+            <p className="text-[15px] font-inter font-medium leading-[24px] text-[#757575] mt-[2px] mb-[40px]">
               (Also includes all applicable duties)
             </p>
 
@@ -95,7 +96,7 @@ const OpenItem = (props) => {
                 {openData?.sizes?.map((shoe, index) => (
                   <div key={index}>
                     <button
-                      className={`border w-[120.67px] h-[48px] rounded-[4px] ${
+                      className={`border w-[120.66px] font-inter h-[48px] rounded-[4px] ${
                         selectedSize === shoe.size ? "border-[#111111]" : ""
                       }`}
                       onClick={() => handleSizeClick(shoe.size)}
@@ -143,31 +144,31 @@ const OpenItem = (props) => {
           </div>
         </div>
 
-        <div className=" mt-[80px]">
+        <div className=" mt-[80px] max-w-[1303px] mx-auto">
           <p className=" text-center font-[400] leading-[32px] text-[19px]">
             Explore the {openData.title}
           </p>
-          <img className=" mt-[65px]" src="/images/boy-1.png" alt="" />
+          <img className=" mt-[65px] " src="/images/boy-1.png" alt="" />
           <p className=" text-center font-[400] leading-[32px] text-[19px] mt-[72px] max-w-[648px] mx-auto">
             Originally designed for performance running, the full-length Max Air
             unit adds soft cushioning.
           </p>
-          <img className=" mt-[65px]" src="/images/boy-2.png" alt="" />
-          <p className=" text-center font-[400] leading-[32px] text-[19px] mt-[72px] max-w-[648px] mx-auto">
+          <img className=" mt-[185px]" src="/images/boy-2.png" alt="" />
+          <p className=" text-center font-[400] leading-[32px] text-[20px] mt-[72px] max-w-[648px] mx-auto">
             Originally designed for performance running, the full-length Max Air
             unit adds soft cushioning.
           </p>{" "}
-          <img className=" mt-[65px]" src="/images/boy-3.png" alt="" />
-          <p className=" text-center font-[400] leading-[32px] text-[19px] mt-[72px] max-w-[648px] mx-auto">
+          <img className=" mt-[185px]" src="/images/boy-3.png" alt="" />
+          <p className=" text-center font-[400] leading-[32px] text-[20px] mt-[72px] max-w-[648px] mx-auto">
             Originally designed for performance running, the full-length Max Air
             unit adds soft cushioning.
           </p>
         </div>
 
-        <div className=" mt-[60px]">
-          <div className=" flex justify-between">
-            <p className=" text-[19px] leading-[24px] font-normal">
-              Best of Air Max
+        <div className=" mt-[60px] max-w-[1344px] w-full mx-auto">
+          <div className=" flex justify-between items-center">
+            <p className=" text-[19px] leading-[24px] font-medium font-inter">
+              You Might Also Like
             </p>
             <div className=" flex gap-[12.38px] items-center">
               <button
@@ -184,39 +185,40 @@ const OpenItem = (props) => {
               </button>
             </div>
           </div>
-          <div className=" mt-[12px]">
-            {/* LandingSwiper */}
-            <Swiper
-              onSlideChange={SlideChange}
-              ref={swiperRef}
-              navigation={{
-                nextEl: ".swiper-button-next", // Selector for your custom "Next" button
-                prevEl: ".swiper-button-prev", // Selector for your custom "Previous" button
-              }}
-              modules={[Navigation]}
-              slidesPerView={3}
-              spaceBetween={12}
-            >
-              {ShoeSwiper.map((data, index) => (
-                <SwiperSlide key={index}>
-                  <div>
-                    <img src={data.img} alt="" />
-                    <div className="mt-[21px] flex justify-between">
-                      <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px]">
-                        {data.title}
-                      </p>
-                      <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px] mr-2">
-                        ${data.price}
-                      </p>
-                    </div>
-                    <p className=" font-helvetica text-[15px] text-[#757575] leading-[24px]">
-                      {data.gender}
+        </div>
+        <div className=" mt-[12px] ml-[30px] mb-[60px]  ">
+          {/* LandingSwiper */}
+          <Swiper
+            onSlideChange={SlideChange}
+            ref={swiperRef}
+            navigation={{
+              nextEl: ".swiper-button-next", // Selector for your custom "Next" button
+              prevEl: ".swiper-button-prev", // Selector for your custom "Previous" button
+            }}
+            modules={[Navigation]}
+            slidesPerView={3.1}
+            spaceBetween={12}
+            className=" max-w-[1366px] w-full mx-auto"
+          >
+            {ShoeSwiper.map((data, index) => (
+              <SwiperSlide key={index}>
+                <div className=" max-w-[431.78px] w-full pb-[15px]">
+                  <img src={data.img} alt="" />
+                  <div className="mt-[21px] flex justify-between">
+                    <p className=" text-[15px] text-[#111111] font-medium font-inter leading-[24px]">
+                      {data.title}
+                    </p>
+                    <p className=" text-[15px] text-[#111111] font-medium font-inter leading-[24px] mr-2">
+                      ${data.price}
                     </p>
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+                  <p className=" font-inter text-[15px] text-[#757575] leading-[24px]">
+                    {data.gender}
+                  </p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </>

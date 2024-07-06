@@ -4,14 +4,14 @@ import Button from "./common/Button";
 const HelloNike = () => {
   return (
     <>
-      <div className=" h-[58px] w-full bg-[#f5f5f5] pt-[9px]">
-        <p className="  text-[15px] leading-[16px] font-helvetica font-medium text-center ">
+      <div className=" w-full bg-[#f5f5f5] mt-[10px] pt-[9px] pb-[5px] ">
+        <p className="  text-[15px] leading-[16px] font-helvetica font-medium text-center  ">
           Hello Nike App
         </p>
-        <p className=" text-center font-normal font-helvetica text-[11px] leading-[24px]">
-          Download the app to access everything Nike.{" "}
+        <p className=" text-center font-normal font-helvetica text-[11px] leading-[24px] mt-[3px]">
+          Download the app to access everything Nike.
           <span>
-            <a href="#">Get Your Great</a>
+            <span className=" underline">Get Your Great</span>
           </span>
         </p>
       </div>

@@ -314,18 +314,51 @@ export const DeliverySMS = (props) => (
   </svg>
 );
 
-
-export const DeliveryLock = (props)=>(
+export const DeliveryLock = (props) => (
   <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width={20}
-  height={20}
-  fill="none"
-  {...props}
->
-  <path
-    fill="#111"
-    d="M2 7.39v8.5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.5H2Zm8-7a6.002 6.002 0 0 1 5.917 5H18a2 2 0 0 1 2 2v8.5a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-8.5a2 2 0 0 1 2-2h2.083A6.002 6.002 0 0 1 10 .39Zm0 2a4.002 4.002 0 0 0-3.874 3h7.748a4.002 4.002 0 0 0-3.874-3Z"
-  />
-</svg>
-)
+    xmlns="http://www.w3.org/2000/svg"
+    width={20}
+    height={20}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#111"
+      d="M2 7.39v8.5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.5H2Zm8-7a6.002 6.002 0 0 1 5.917 5H18a2 2 0 0 1 2 2v8.5a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-8.5a2 2 0 0 1 2-2h2.083A6.002 6.002 0 0 1 10 .39Zm0 2a4.002 4.002 0 0 0-3.874 3h7.748a4.002 4.002 0 0 0-3.874-3Z"
+    />
+  </svg>
+);
+
+export const ArrowDrop = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={14}
+    height={14}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#000"
+      d="M1.374 3.763a1 1 0 0 1 1.414.025l5.558 5.754-1.439 1.39L1.35 5.177a1 1 0 0 1 .024-1.414Z"
+    />
+    <path
+      fill="#000"
+      d="m5.654 9.542 5.558-5.755a1 1 0 0 1 1.438 1.39L7.093 10.93 5.654 9.542Z"
+    />
+  </svg>
+);
+
+export const PinLocation = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={7}
+    height={10}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#fff"
+      d="M3.184.297C1.414.297-.008 1.74-.008 3.513c0 .642.22 1.239.525 1.74l2.67 4.044 2.67-4.044c.31-.501.525-1.101.525-1.743A3.206 3.206 0 0 0 3.184.297Z"
+    />
+  </svg>
+);

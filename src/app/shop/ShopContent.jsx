@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FilterChange } from "@/icons/logos";
+import { ArrowDrop, FilterChange } from "@/icons/logos";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { clothingItems, shop } from "../../../utils/shop";
 import Button from "../components/common/Button";
@@ -39,7 +39,7 @@ const ShopContent = () => {
   };
   return (
     <div className="mt-[78px]">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mx-[48px] max-w-[1344px] w-full">
         <p className="text-[24px] font-helvetica font-medium leading-[31.2px] text-[#111111]">
           New (
           {filteredShopItems.length < 10
@@ -56,22 +56,22 @@ const ShopContent = () => {
               <FilterChange />
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center gap-[7.8px]">
             <p className="font-helvetica text-[16px] leading-[28px]">Sort By</p>
-            <div className="mb-1">
-              <RiArrowDropDownLine size={40} />
+            <div className="">
+              <ArrowDrop />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-[30px] flex gap-[40px]">
-        <div className="w-[250px] max-w">
-          <ul className="space-y-[14.9px] pb-[50px] max-h-[400px] overflow-y-auto ">
+      <div className="mt-[30px] flex gap-[48px] max-w-[1344px] mx-auto   ">
+        <div className=" max-w-[260px] w-full">
+          <ul className="space-y-[14.9px] max-h-[400px] overflow-y-auto pb-[50px] mb-[52.59px] ">
             {clothingItems.map((items, index) => (
               <li
                 key={index}
-                className="font-helvetica font-medium text-[15px] leading-[21.6px]"
+                className="font-helvetica font-medium text-[15px] leading-[17px] max-w-[161.17px]"
               >
                 {items}
               </li>
@@ -100,7 +100,7 @@ const ShopContent = () => {
                     type="checkbox"
                     name="men"
                     id="men"
-                    className="mr-2"
+                    className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
                     checked={selectedGenders.includes("Men")}
                     onChange={() => handleGenderChange("Men")}
                   />
@@ -111,7 +111,7 @@ const ShopContent = () => {
                     type="checkbox"
                     name="women"
                     id="women"
-                    className="mr-2"
+                    className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
                     checked={selectedGenders.includes("Women")}
                     onChange={() => handleGenderChange("Women")}
                   />
@@ -122,7 +122,7 @@ const ShopContent = () => {
                     type="checkbox"
                     name="kid"
                     id="kid"
-                    className="mr-2"
+                    className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
                     checked={selectedGenders.includes("Kid")}
                     onChange={() => handleGenderChange("Kid")}
                   />
@@ -154,7 +154,7 @@ const ShopContent = () => {
                     type="checkbox"
                     name="boys"
                     id="boys"
-                    className="mr-2"
+                    className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
                   />
                   <label htmlFor="boys">Boys</label>
                 </div>
@@ -163,7 +163,7 @@ const ShopContent = () => {
                     type="checkbox"
                     name="girls"
                     id="girls"
-                    className="mr-2"
+                    className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
                   />
                   <label htmlFor="girls">Girls</label>
                 </div>
@@ -195,7 +195,7 @@ const ShopContent = () => {
                     type="checkbox"
                     name="under-20"
                     id="under-20"
-                    className="mr-2"
+                    className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
                   />
                   <label htmlFor="under-20">Under $20</label>
                 </div>
@@ -204,7 +204,7 @@ const ShopContent = () => {
                     type="checkbox"
                     name="above-20"
                     id="above-20"
-                    className="mr-2"
+                    className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
                   />
                   <label htmlFor="above-20">$21 - Above</label>
                 </div>
@@ -214,12 +214,12 @@ const ShopContent = () => {
           <hr />
         </div>
         <div>
-          <div className="grid grid-cols-3 max-w-[1092px] gap-[16px] mb-[55px]">
+          <div className="grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px]">
             {filteredShopItems.map((data, index) => (
               <div
                 key={index}
                 onClick={() => handleItemClick(data)}
-                className="cursor-pointer"
+                className="cursor-pointer max-w-[348px] w-full pb-[42px]"
               >
                 <img src={data.img} alt="" className="w-[348px] h-[348px]" />
                 <p className="text-[#9E3500] font-helvetica font-medium text-[15px] leading-[28px] mt-[9px]">

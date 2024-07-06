@@ -49,11 +49,11 @@ const Header = () => {
         </div>
       </div>
 
-      <div className=" max-w-[1343px] w-full mx-auto h-[60px] flex justify-between items-center relative">
+      <div className=" max-w-[1440px] w-full mx-auto h-[60px] pl-[38px] pr-[38px] flex justify-between items-center relative">
         <button onClick={() => router.push("/")}>
           <NikeLogo />
         </button>
-        <ul className=" flex gap-6 max-w-[760px] w-full absolute inset-0 mx-auto justify-center items-center">
+        <ul className=" flex gap-[24px] max-w-[760px] w-full absolute inset-0 mx-auto justify-center items-center">
           <li
             className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer"
             onClick={() => router.push("/shop")}

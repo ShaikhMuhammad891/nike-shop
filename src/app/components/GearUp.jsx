@@ -49,14 +49,13 @@ const GearUp = () => {
         <p className=" text-[23px] leading-[28px] font-helvetica font-medium text-[#111111]">
           Gear Up
         </p>
-        <div className=" flex justify-between">
+        <div className=" flex justify-between items-center">
           {/* left Swiper */}
           <div className=" max-w-[666px] w-full">
-            <div className=" flex justify-end">
+            <div className=" flex justify-end items-center">
               <div className=" flex gap-[12.38px] items-center">
                 <p className=" text-[15px] leading-[24px] font-helvetica font-medium">
-                  {" "}
-                  Shop
+                  Men's Shop
                 </p>
                 <button
                   onClick={goPrev}
@@ -84,7 +83,7 @@ const GearUp = () => {
                 modules={[Navigation]}
                 slidesPerView={2}
                 spaceBetween={12}
-                className=" mt-[12px]"
+                className=" mt-[12px] mb-[53px]"
               >
                 {LeftSwiper.map((data, index) => (
                   <SwiperSlide key={index}>
@@ -115,8 +114,7 @@ const GearUp = () => {
             <div className=" flex justify-end">
               <div className=" flex gap-[12.38px] items-center">
                 <p className=" text-[15px] leading-[24px] font-helvetica font-medium">
-                  {" "}
-                  Shop
+                  Women's Shop
                 </p>
                 <button
                   onClick={goPrev}
@@ -144,7 +142,7 @@ const GearUp = () => {
                 modules={[Navigation]}
                 slidesPerView={2}
                 spaceBetween={12}
-                className=" mt-[12px]"
+                className=" mt-[12px] mb-[54px]"
               >
                 {RightSwiper.map((data, index) => (
                   <SwiperSlide key={index}>
@@ -172,7 +170,7 @@ const GearUp = () => {
         </div>
 
         {/* do not miss */}
-        <div className=" mt-[84px]">
+        <div className=" mt-[138px]">
           <p className=" text-[23px] leading-[28px] font-helvetica font-medium text-[#111111]">
             Don't Miss
           </p>
@@ -180,7 +178,6 @@ const GearUp = () => {
           <img src="/images/dont-miss.png" alt="" className=" mt-[25px]" />
         </div>
       </div>
-     
     </>
   );
 };

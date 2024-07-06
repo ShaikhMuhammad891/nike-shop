@@ -2,8 +2,8 @@
 import { NikeLogo } from "@/icons/logos";
 import React, { useState } from "react";
 import Select from "react-select";
-import countryList from "react-select-country-list";
 import { Countries, customStyles } from "../../../utils/countries";
+import countryList from "react-select-country-list";
 import { useRouter } from "next/navigation";
 
 const SignUp = () => {

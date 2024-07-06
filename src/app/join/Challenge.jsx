@@ -5,7 +5,7 @@ import { NikeLogo } from "@/icons/logos";
 const Challenge = () => {
   return (
     <div className=" mb-[56px]">
-      <div className=" mt-[32px] max-w-[918px] mx-auto">
+      <div className=" mt-[48px] max-w-[918px] mx-auto">
         <p className=" flex justify-center text-[54px] leading-[60px] font-medium">
           BREAKING BARRIERS CHALLENGE
         </p>
@@ -35,7 +35,7 @@ const Challenge = () => {
           ))}
         </div>
       </div>
-      <div className=" mt-[84px] bg-[#f2f0ed] w-full pt-[90px] pb-[60px]">
+      {/* <div className=" mt-[84px] bg-[#f2f0ed] w-full pt-[90px] pb-[60px]">
         <div className=" flex justify-center ">
           <NikeLogo fill="#fe5307" />
         </div>
@@ -49,6 +49,15 @@ const Challenge = () => {
             <Button title="Sign-In" bgcolor="black" color="white" />
           </div>
         </div>
+      </div> */}
+      <div className=" relative">
+        <img src="/images/where-all.png" alt="" />
+       <div className=" flex justify-center ">
+       <div className=" flex gap-[8px] absolute bottom-[48px] justify-center ">
+            <Button title="Join Us" bgcolor="black" color="white" />
+            <Button title="Sign-In" bgcolor="black" color="white" />
+          </div>
+       </div>
       </div>
     </div>
   );

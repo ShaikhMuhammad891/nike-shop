@@ -9,15 +9,15 @@ const Bag = (props) => {
     <div className=" max-w-[1100px] mx-auto my-[40px]">
       <div className=" flex gap-[18px] w-full">
         <div className=" max-w-[723.33px] w-full">
-          <div className=" bg-[#E5E5E5] py-[14px] pl-[12px] w-full">
-            <p className=" text-[13px] leading-[14px] font-medium ">
+          <div className=" bg-[#f5f5f5] py-[14px] pl-[20px] w-full">
+            <p className=" text-[13px] leading-[14px] font-medium font-inter ">
               Free Delivery
             </p>
             <div className=" flex gap-[18px] mt-[4px]">
-              <p className=" text-[11px] leading-6">
+              <p className=" text-[11px] leading-6 font-inter">
                 Applies to orders of ₹ 14 000.00 or more.
               </p>
-              <p className=" underline text-[11px] leading-6 font-medium">
+              <p className=" underline text-[11px] leading-6 font-medium font-inter">
                 View details
               </p>
             </div>
@@ -32,14 +32,14 @@ const Bag = (props) => {
               </div>
               <div className=" max-w-[537px] flex justify-between w-full">
                 <div>
-                  <p className=" text-[15px] leading-7">{bagData.title}</p>
-                  <p className=" text-[15px] leading-7 text-[#757575] ">
+                  <p className=" text-[15px] leading-7 font-inter">{bagData.title}</p>
+                  <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
                     {bagData.genderWear}
                   </p>
-                  <p className=" text-[15px] leading-7 text-[#757575] ">
+                  <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
                     Green {bagData.color}
                   </p>
-                  <p className=" text-[15px] leading-7 text-[#757575] ">
+                  <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
                     Quantity {bagData.id}
                   </p>
                   <div className=" flex gap-[16px] mt-[28px]">
@@ -61,28 +61,28 @@ const Bag = (props) => {
           </div>
         </div>
         <div className=" max-w-[350.67px] w-full">
-          <p className=" text-[21px] leading-[33px]">Summary</p>
+          <p className=" text-[21px] leading-[33px] font-inter">Summary</p>
           <div className=" flex justify-between w-full mt-[25px]">
-            <p className=" text-[15px] leading-7">Subtotal</p>
-            <p className=" text-[15px] leading-7">ÙSD: $ {bagData.price}</p>
+            <p className=" text-[15px] leading-7 font-inter">Subtotal</p>
+            <p className=" text-[15px] leading-7 font-inter">ÙSD: $ {bagData.price}</p>
           </div>
           <div className=" mt-[8px] flex justify-between w-full pb-[20px]">
-            <p className=" text-[15px] leading-7">
+            <p className=" text-[15px] leading-7 font-inter">
               Estimated Delivery & Handling
             </p>
-            <p className=" text-[15px] leading-7">Free</p>
+            <p className=" text-[15px] leading-7 font-inter">Free</p>
           </div>
           <hr />
 
           <div className=" my-[20px] flex justify-between w-full ">
-            <p className=" text-[14px] leading-7">Total</p>
-            <p className=" text-[14px] leading-7 font-medium">Subtotal</p>
+            <p className=" text-[14px] leading-7 font-inter">Total</p>
+            <p className=" text-[14px] leading-7 font-medium font-inter">USD : $ {bagData.price}</p>
           </div>
           <hr />
 
           <button
             onClick={() => setIsClicked(!isClicked)}
-            className={`mt-[32px] w-full rounded-[30px] border py-[18px] ${
+            className={`mt-[32px] w-full rounded-[30px] border py-[18px] font-inter ${
               isClicked && " bg-black text-white"
             }`}
           >
