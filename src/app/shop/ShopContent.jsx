@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowDrop, FilterChange } from "@/icons/logos";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { clothingItems, shop } from "../../../utils/shop";
@@ -7,27 +7,40 @@ import Button from "../components/common/Button";
 import { useRouter } from "next/navigation";
 import { useShop } from "../../../context/ContextData";
 
-const ShopContent = () => {
+const ShopContent = ({ category }) => {
   const [openDropdown, setOpenDropdown] = useState(["gender", "kids", "price"]);
   const [selectedGenders, setSelectedGenders] = useState([]);
   const { setSelectedItem } = useShop();
+  const [categoryFilter, setCategoryFilter] = useState([]);
   const router = useRouter();
+  console.log(category, "category");
 
   const toggleDropdown = (dropdown) => {
-    setOpenDropdown((prevOpenDropdown) =>
-      prevOpenDropdown.includes(dropdown)
-        ? prevOpenDropdown.filter((item) => item !== dropdown)
-        : [...prevOpenDropdown, dropdown]
+    setOpenDropdown((prev) =>
+      prev.includes(dropdown)
+        ? prev.filter((item) => item !== dropdown)
+        : [...prev, dropdown]
     );
   };
 
   const handleGenderChange = (gender) => {
-    setSelectedGenders((prevSelectedGenders) =>
-      prevSelectedGenders.includes(gender)
-        ? prevSelectedGenders.filter((g) => g !== gender)
-        : [...prevSelectedGenders, gender]
+    setSelectedGenders((prev) =>
+      prev.includes(gender)
+        ? prev.filter((g) => g !== gender)
+        : [...prev, gender]
     );
   };
+
+  useEffect(() => {
+    if (category) {
+      const categoryFiltered = shop.filter(
+        (item) => item.gender == category[0].toUpperCase() + category.slice(1)
+      );
+      setCategoryFilter(categoryFiltered);
+    } else {
+      setCategoryFilter(shop);
+    }
+  }, [category]);
 
   const filteredShopItems =
     selectedGenders.length === 0
@@ -38,15 +51,27 @@ const ShopContent = () => {
     router.push(`/selectedItem/${data.id}`);
   };
   return (
-    <div className="mt-[78px]">
+    <div className="mt-[78px] relative">
       <div className="flex justify-between items-center mx-[48px] max-w-[1344px] w-full">
-        <p className="text-[24px] font-helvetica font-medium leading-[31.2px] text-[#111111]">
-          New (
-          {filteredShopItems.length < 10
-            ? "0" + filteredShopItems.length
-            : filteredShopItems.length}
-          )
-        </p>
+        <div className=" flex items-center  max-w-[600px] w-full gap-[210px]">
+          <p className="text-[24px] font-helvetica font-medium leading-[31.2px] text-[#111111]">
+            New (
+            {filteredShopItems.length < 10
+              ? "0" + filteredShopItems.length
+              : filteredShopItems.length}
+            )
+          </p>
+          {category ? (
+            <p className=" text-[24px] font-helvetica font-medium leading-[31.2px]">
+              Only For {category}
+            </p>
+          ) : (
+            <p className=" text-[24px] font-helvetica font-medium leading-[31.2px]">
+              Featured
+            </p>
+          )}
+        </div>
+
         <div className="flex items-center gap-[32px]">
           <div className="flex items-center gap-[7.91px]">
             <p className="font-helvetica text-[16px] leading-[28px]">
@@ -155,6 +180,8 @@ const ShopContent = () => {
                     name="boys"
                     id="boys"
                     className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
+                    onChange={() => handleGenderChange("Boy")}
+
                   />
                   <label htmlFor="boys">Boys</label>
                 </div>
@@ -214,7 +241,11 @@ const ShopContent = () => {
           <hr />
         </div>
         <div>
-          <div className="grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px]">
+          <div
+            className={`grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px] ${
+              category && "hidden"
+            }`}
+          >
             {filteredShopItems.map((data, index) => (
               <div
                 key={index}
@@ -240,6 +271,40 @@ const ShopContent = () => {
               </div>
             ))}
           </div>
+
+          {/* for filtered */}
+
+          <div
+            className={`grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px] ${
+              !category && "hidden"
+            } `}
+          >
+            {categoryFilter.map((data, index) => (
+              <div
+                key={index}
+                onClick={() => handleItemClick(data)}
+                className="cursor-pointer max-w-[348px] w-full pb-[42px]"
+              >
+                <img src={data.img} alt="" className="w-[348px] h-[348px]" />
+                <p className="text-[#9E3500] font-helvetica font-medium text-[15px] leading-[28px] mt-[9px]">
+                  {data.material}
+                </p>
+                <p className="font-helvetica font-medium text-[15px] leading-[24px] text-[#111111]">
+                  {data.title}
+                </p>
+                <p className="text-[#757575] font-helvetica font-normal text-[15px] leading-[24px]">
+                  {data.genderWear}
+                </p>
+                <p className="text-[#757575] font-helvetica font-normal text-[15px] leading-[24px] mt-[5px]">
+                  {data.color} Colour
+                </p>
+                <p className="font-helvetica font-medium text-[15px] leading-[28px] text-[#111111] mt-[7px]">
+                  ${data.price}
+                </p>
+              </div>
+            ))}
+          </div>
+
           <hr />
           <div className="mt-[62px]">
             <p className="text-[19px] font-helvetica font-medium leading-[24px]">

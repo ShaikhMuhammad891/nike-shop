@@ -16,7 +16,7 @@ const HelloNike = () => {
         </p>
       </div>
       <div className=" flex justify-center">
-        <Image src="/images/landing-photo.png" width={1344} height={700} />
+        <Image src="/images/landing-photo.png" alt="none" width={1344} height={700} />
       </div>
 
       <div className=" mt-[48px]">

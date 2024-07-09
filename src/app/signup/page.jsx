@@ -36,20 +36,21 @@ const SignUp = () => {
         type="password"
         placeholder="Password"
         className=" custom-input py-[12px] px-[17px] border w-full rounded-[3px] mt-[13px]"
-      />{" "}
+      />
       <input
         type="text"
         placeholder="First Name"
         className=" custom-input py-[12px] px-[17px] border w-full rounded-[3px] mt-[13px]"
-      />{" "}
+      />
       <input
         type="text"
         placeholder="Last Name"
         className=" custom-input py-[12px] px-[17px] border w-full rounded-[3px] mt-[13px]"
-      />{" "}
+      />
       <input
-        type="date"
         placeholder="Date of Birth"
+        onFocus={(e)=>e.target.type = "date"}
+        onBlur={(e)=>e.target.type = "text"}
         className=" custom-input py-[12px] px-[17px] border w-full rounded-[3px] mt-[13px]"
       />
       <p className=" mt-[7px] text-[11px] leading-[13.4px] text-[#8d8d8d] text-center">

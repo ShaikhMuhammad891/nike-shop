@@ -1,6 +1,7 @@
 "use client";
 import { Cart, Heart, Line, NikeLogo, SearchIcon } from "@/icons/logos";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
@@ -10,7 +11,12 @@ const Header = () => {
     <div className={`${pathname === "/delivery" && "hidden"}`}>
       <div className={`bg-[#F5F5F5] h-[36px] w-full flex items-center `}>
         <div className=" max-w-[1343px] w-full mx-auto flex justify-between items-center ">
-          <Image src="/images/header-person.png" width={24} height={24} />
+          <Image
+            src="/images/header-person.png"
+            alt="none"
+            width={24}
+            height={24}
+          />
           <ul className=" flex gap-[15px] items-center">
             <li
               className=" text-[11px] font-[500] leading-[14px] cursor-pointer"
@@ -54,21 +60,41 @@ const Header = () => {
           <NikeLogo />
         </button>
         <ul className=" flex gap-[24px] max-w-[760px] w-full absolute inset-0 mx-auto justify-center items-center">
-          <li
-            className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer"
-            onClick={() => router.push("/shop")}
+          <Link href="/shop">
+            <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+              New & Featured
+            </li>
+          </Link>
+          <Link
+            href={{
+              pathname: "/shop",
+              query: { category: "men" },
+            }}
           >
-            New & Featured
-          </li>
-          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
-            Men
-          </li>
-          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
-            Women
-          </li>
-          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer ">
-            Kids
-          </li>
+            <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+              Men
+            </li>
+          </Link>
+          <Link
+            href={{
+              pathname: "/shop",
+              query: { category: "women" },
+            }}
+          >
+            <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+              Women
+            </li>
+          </Link>
+          <Link
+            href={{
+              pathname: "/shop",
+              query: { category: "kid" },
+            }}
+          >
+            <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer ">
+              Kids
+            </li>
+          </Link>
           <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
             Sale
           </li>

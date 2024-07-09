@@ -1,10 +1,13 @@
-import React from 'react'
-import ShopContent from './ShopContent'
+import React from "react";
+import ShopContent from "./ShopContent";
 
-const Shop = () => {
+const Shop = ({ searchParams }) => {
+  const { category } = searchParams;
   return (
-    <div className=' max-w-[1440px] mx-auto'><ShopContent /></div>
-  )
-}
+    <div className=" max-w-[1440px] mx-auto">
+      <ShopContent category={category} />
+    </div>
+  );
+};
 
-export default Shop
+export default Shop;

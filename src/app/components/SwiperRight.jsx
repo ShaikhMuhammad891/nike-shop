@@ -1,26 +1,23 @@
 "use client";
-import { ArrowBack } from "@/icons/logos";
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
-// import "./styles.css";
-
 // import required modules
 import { Navigation } from "swiper/modules";
-import { ShoeSwiper } from "../../../utils/SwiperContent";
+import { LeftSwiper, RightSwiper } from "../../../utils/SwiperContent";
 
-const LandingSwiper = () => {
+const SwiperRight = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isClickedNext, setIsClickedNext] = useState(false);
   const [isClickedPrev, setIsClickedPrev] = useState(false);
 
   const SlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
-    console.log(activeIndex)
+    console.log(activeIndex);
   };
 
   const swiperRef = useRef(null);
@@ -47,14 +44,12 @@ const LandingSwiper = () => {
   };
   return (
     <>
-      <div className=" mt-[84px] max-w-[1440px] w-full mx-auto mb-[30px]">
-        <div className=" flex justify-between items-center ml-[48px] max-w-[1344px]">
-          <p className=" text-[22px] leading-[28px] font-helvetica font-medium">
-            Best of Air Max
-          </p>
+      {/* left Swiper */}
+      <div className=" max-w-[666px] w-full">
+        <div className=" flex justify-end items-center">
           <div className=" flex gap-[12.38px] items-center">
             <p className=" text-[15px] leading-[24px] font-helvetica font-medium">
-              Shop
+              Women's Shop
             </p>
             <button
               onClick={goPrev}
@@ -70,8 +65,8 @@ const LandingSwiper = () => {
             </button>
           </div>
         </div>
-        <div className=" mt-[12px] ml-[48px]">
-          {/* LandingSwiper */}
+
+        <div className=" ml-[48px]">
           <Swiper
             onSlideChange={SlideChange}
             ref={swiperRef}
@@ -80,25 +75,27 @@ const LandingSwiper = () => {
               prevEl: ".swiper-button-prev", // Selector for your custom "Previous" button
             }}
             modules={[Navigation]}
-            slidesPerView={3.1}
+            slidesPerView={2}
             spaceBetween={12}
-            className=""
+            className=" mt-[12px] mb-[53px]"
           >
-            {ShoeSwiper.map((data, index) => (
+            {RightSwiper.map((data, index) => (
               <SwiperSlide key={index}>
-                <div className=" mb-[30px]">
+                <div>
                   <img src={data.img} alt="" />
-                  <div className="mt-[21px] flex justify-between">
-                    <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px]">
-                      {data.title}
-                    </p>
-                    <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px] mr-2">
-                      ${data.price}
+                  <div className=" max-w-[284px]">
+                    <div className="mt-[21px] flex justify-between">
+                      <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px]">
+                        {data.title}
+                      </p>
+                      <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px] mr-2">
+                        ${data.price}
+                      </p>
+                    </div>
+                    <p className=" font-helvetica text-[15px] text-[#757575] leading-[24px] max-w-[199.78px]">
+                      {data.gender}
                     </p>
                   </div>
-                  <p className=" font-helvetica text-[15px] text-[#757575] leading-[24px]">
-                    {data.gender}
-                  </p>
                 </div>
               </SwiperSlide>
             ))}
@@ -109,4 +106,4 @@ const LandingSwiper = () => {
   );
 };
 
-export default LandingSwiper;
+export default SwiperRight;

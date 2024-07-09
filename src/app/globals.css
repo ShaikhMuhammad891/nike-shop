@@ -34,3 +34,19 @@
     /* Remove default outline */
 }
 
+.custom-input:focus {
+    border-width: 2px;
+    /* Border width on focus */
+    border-color: black;
+    /* Border color on focus */
+    outline: none;
+    /* Remove default outline */
+}
+
+/* Add this in your CSS file */
+input[type="checkbox"]:checked {
+    background-color: #CCCCCC;
+    /* Change this to your desired green color */
+    border-color: #CCCCCC;
+    /* Optional: Match border color to the background */
+}
