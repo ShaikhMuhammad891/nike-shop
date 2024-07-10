@@ -16,6 +16,11 @@ const ShopContent = ({ category }) => {
     price: true,
   });
   const [priceFilter, setPriceFilter] = useState([]);
+  const categoryMap = {
+    men: "Men",
+    women: "Women",
+    kid: "Kid",
+  };
   const router = useRouter();
 
   // Handle checked
@@ -44,6 +49,15 @@ const ShopContent = ({ category }) => {
       categoryFiltered = categoryFiltered.filter(
         (item) => item.gender === category[0].toUpperCase() + category.slice(1)
       );
+      const normalizedCategory = category.toLowerCase();
+      if (categoryMap[normalizedCategory]) {
+        setChecked((prev) => {
+          if (!prev.includes(categoryMap[normalizedCategory])) {
+            return [...prev, categoryMap[normalizedCategory]];
+          }
+          return prev;
+        });
+      }
     }
 
     if (checked.length !== 0) {
@@ -330,20 +344,6 @@ const ShopContent = ({ category }) => {
               />
               <Button
                 title="New Football Shoes"
-                border="1px solid"
-                borderColor="#CCCCCC"
-                bgcolor="transparent"
-                color="#111111"
-              />
-              <Button
-                title="New Men's Shoes"
-                border="1px solid"
-                borderColor="#CCCCCC"
-                bgcolor="transparent"
-                color="#111111"
-              />
-              <Button
-                title="New Running Shoes"
                 border="1px solid"
                 borderColor="#CCCCCC"
                 bgcolor="transparent"
