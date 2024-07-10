@@ -8,23 +8,17 @@ import { useRouter } from "next/navigation";
 import { useShop } from "../../../context/ContextData";
 
 const ShopContent = ({ category }) => {
-  const [openDropdown, setOpenDropdown] = useState(["gender", "kids", "price"]);
-  const [selectedGenders, setSelectedGenders] = useState([]);
-  const { setSelectedItem } = useShop();
   const [categoryFilter, setCategoryFilter] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const [isDropdown, setIsDropdown] = useState({
+    gender: true,
+    kids: true,
+    price: true,
+  });
   const router = useRouter();
-  console.log(category, "category");
-
-  const toggleDropdown = (dropdown) => {
-    setOpenDropdown((prev) =>
-      prev.includes(dropdown)
-        ? prev.filter((item) => item !== dropdown)
-        : [...prev, dropdown]
-    );
-  };
-
-  const handleGenderChange = (gender) => {
-    setSelectedGenders((prev) =>
+  //checked
+  const handleChecked = (gender) => {
+    setChecked((prev) =>
       prev.includes(gender)
         ? prev.filter((g) => g !== gender)
         : [...prev, gender]
@@ -37,16 +31,24 @@ const ShopContent = ({ category }) => {
         (item) => item.gender == category[0].toUpperCase() + category.slice(1)
       );
       setCategoryFilter(categoryFiltered);
+    } else if (checked.length !== 0) {
+      const categoryFiltered = shop.filter((item) =>
+        checked.includes(item.gender)
+      );
+      setCategoryFilter(categoryFiltered);
+    } else if (checked.length === 0) {
+      setCategoryFilter(shop);
     } else {
       setCategoryFilter(shop);
     }
-  }, [category]);
+  }, [category, checked, shop]);
 
-  const filteredShopItems =
-    selectedGenders.length === 0
-      ? shop
-      : shop.filter((item) => selectedGenders.includes(item.gender));
+  //dropdown
+  const handleDropdown = (value) => {
+    setIsDropdown({ ...isDropdown, [value]: !isDropdown[value] });
+  };
 
+  //puah to another page
   const handleItemClick = (data) => {
     router.push(`/selectedItem/${data.id}`);
   };
@@ -56,9 +58,9 @@ const ShopContent = ({ category }) => {
         <div className=" flex items-center  max-w-[600px] w-full gap-[210px]">
           <p className="text-[24px] font-helvetica font-medium leading-[31.2px] text-[#111111]">
             New (
-            {filteredShopItems.length < 10
-              ? "0" + filteredShopItems.length
-              : filteredShopItems.length}
+            {categoryFilter.length < 10
+              ? "0" + categoryFilter.length
+              : categoryFilter.length}
             )
           </p>
           {category ? (
@@ -104,21 +106,21 @@ const ShopContent = ({ category }) => {
           </ul>
           <hr />
           {/* Gender */}
-          <div className="pb-[24px]">
+          <div className={`pb-[24px] ${category && "hidden"}`}>
             <div className="flex justify-between mt-[15px] items-center">
               <p className="font-helvetica font-medium text-[16px]">Gender</p>
               <div
                 className="cursor-pointer"
-                onClick={() => toggleDropdown("gender")}
+                onClick={() => handleDropdown("gender")}
               >
-                {openDropdown.includes("gender") ? (
+                {isDropdown.gender ? (
                   <RiArrowDropUpLine size={40} />
                 ) : (
                   <RiArrowDropDownLine size={40} />
                 )}
               </div>
             </div>
-            {openDropdown.includes("gender") && (
+            {isDropdown.gender && (
               <div className="mt-[10px]">
                 <div>
                   <input
@@ -126,8 +128,8 @@ const ShopContent = ({ category }) => {
                     name="men"
                     id="men"
                     className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    checked={selectedGenders.includes("Men")}
-                    onChange={() => handleGenderChange("Men")}
+                    onChange={() => handleChecked("Men")}
+                    checked={checked.includes("Men")}
                   />
                   <label htmlFor="men">Men</label>
                 </div>
@@ -137,8 +139,8 @@ const ShopContent = ({ category }) => {
                     name="women"
                     id="women"
                     className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    checked={selectedGenders.includes("Women")}
-                    onChange={() => handleGenderChange("Women")}
+                    onChange={() => handleChecked("Women")}
+                    checked={checked.includes("Women")}
                   />
                   <label htmlFor="women">Women</label>
                 </div>
@@ -148,8 +150,8 @@ const ShopContent = ({ category }) => {
                     name="kid"
                     id="kid"
                     className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    checked={selectedGenders.includes("Kid")}
-                    onChange={() => handleGenderChange("Kid")}
+                    onChange={() => handleChecked("Kid")}
+                    checked={checked.includes("Kid")}
                   />
                   <label htmlFor="kid">Kid</label>
                 </div>
@@ -163,16 +165,16 @@ const ShopContent = ({ category }) => {
               <p className="font-helvetica font-medium text-[16px]">Kids</p>
               <div
                 className="cursor-pointer"
-                onClick={() => toggleDropdown("kids")}
+                onClick={() => handleDropdown("kids")}
               >
-                {openDropdown.includes("kids") ? (
+                {isDropdown.kids ? (
                   <RiArrowDropUpLine size={40} />
                 ) : (
                   <RiArrowDropDownLine size={40} />
                 )}
               </div>
             </div>
-            {openDropdown.includes("kids") && (
+            {isDropdown.kids && (
               <div className="mt-[10px]">
                 <div>
                   <input
@@ -180,8 +182,8 @@ const ShopContent = ({ category }) => {
                     name="boys"
                     id="boys"
                     className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    onChange={() => handleGenderChange("Boy")}
-
+                    onChange={() => handleChecked("boy")}
+                    checked={checked.includes("boy")}
                   />
                   <label htmlFor="boys">Boys</label>
                 </div>
@@ -191,6 +193,8 @@ const ShopContent = ({ category }) => {
                     name="girls"
                     id="girls"
                     className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
+                    onChange={() => handleChecked("girl")}
+                    checked={checked.includes("girl")}
                   />
                   <label htmlFor="girls">Girls</label>
                 </div>
@@ -206,16 +210,16 @@ const ShopContent = ({ category }) => {
               </p>
               <div
                 className="cursor-pointer"
-                onClick={() => toggleDropdown("price")}
+                onClick={() => handleDropdown("price")}
               >
-                {openDropdown.includes("price") ? (
+                {isDropdown.price ? (
                   <RiArrowDropUpLine size={40} />
                 ) : (
                   <RiArrowDropDownLine size={40} />
                 )}
               </div>
             </div>
-            {openDropdown.includes("price") && (
+            {isDropdown.price && (
               <div className="mt-[10px]">
                 <div>
                   <input
@@ -241,43 +245,9 @@ const ShopContent = ({ category }) => {
           <hr />
         </div>
         <div>
+          {/* filter item based on category */}
           <div
-            className={`grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px] ${
-              category && "hidden"
-            }`}
-          >
-            {filteredShopItems.map((data, index) => (
-              <div
-                key={index}
-                onClick={() => handleItemClick(data)}
-                className="cursor-pointer max-w-[348px] w-full pb-[42px]"
-              >
-                <img src={data.img} alt="" className="w-[348px] h-[348px]" />
-                <p className="text-[#9E3500] font-helvetica font-medium text-[15px] leading-[28px] mt-[9px]">
-                  {data.material}
-                </p>
-                <p className="font-helvetica font-medium text-[15px] leading-[24px] text-[#111111]">
-                  {data.title}
-                </p>
-                <p className="text-[#757575] font-helvetica font-normal text-[15px] leading-[24px]">
-                  {data.genderWear}
-                </p>
-                <p className="text-[#757575] font-helvetica font-normal text-[15px] leading-[24px] mt-[5px]">
-                  {data.color} Colour
-                </p>
-                <p className="font-helvetica font-medium text-[15px] leading-[28px] text-[#111111] mt-[7px]">
-                  ${data.price}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* for filtered */}
-
-          <div
-            className={`grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px] ${
-              !category && "hidden"
-            } `}
+            className={`grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px]`}
           >
             {categoryFilter.map((data, index) => (
               <div
