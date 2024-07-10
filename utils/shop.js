@@ -69,6 +69,7 @@ export const shop = [
     title: "Nike Women's Tee",
     genderWear: "Women's Top",
     gender: "Women",
+    kid: "girl",
     color: 2,
     price: 27.0,
   },
@@ -102,6 +103,8 @@ export const shop = [
     title: "Nike Running Top",
     genderWear: "Men's Top",
     gender: "Men",
+    kid: "boy",
+
     color: 3,
     price: 28.0,
   },
@@ -113,6 +116,8 @@ export const shop = [
     title: "Nike React Infinity Run Flyknit",
     genderWear: "Men's Shoes",
     gender: "Men",
+    kid: "boy",
+
     color: 3,
     price: 20.25,
   },
@@ -124,7 +129,6 @@ export const shop = [
     title: "Nike Kids T-Shirt",
     genderWear: "Kid's Top",
     gender: "Kid",
-    girl: "girl",
     color: 1,
     price: 15.0,
   },
@@ -136,6 +140,8 @@ export const shop = [
     title: "Nike Sportswear Top",
     genderWear: "Men's Top",
     gender: "Men",
+    kid: "boy",
+
     color: 4,
     price: 32.0,
   },
@@ -146,9 +152,9 @@ export const shop = [
     material: "Just In",
     title: "Nike ZoomX Invincible Run",
     genderWear: "Women's Shoes",
-    girl: "girl",
-
     gender: "Women",
+    kid: "girl",
+
     color: 6,
     price: 18.99,
   },
@@ -171,6 +177,8 @@ export const shop = [
     title: "Nike Air Max 90",
     genderWear: "Men's Shoes",
     gender: "Men",
+    kid: "boy",
+
     color: 2,
     price: 15.75,
   },
@@ -182,8 +190,6 @@ export const shop = [
     title: "Nike Air Force 1 Mid '07",
     genderWear: "Men's Shoes",
     gender: "Men",
-    boy: "boy",
-
     color: 1,
     price: 10.5,
   },
@@ -205,9 +211,9 @@ export const shop = [
     material: "New Arrival",
     title: "Nike Women's Tank",
     genderWear: "Women's Top",
-    girl: "girl",
-
     gender: "Women",
+    kid: "girl",
+
     color: 1,
     price: 25.0,
   },
@@ -219,8 +225,6 @@ export const shop = [
     title: "Nike Air Zoom Terra Kiger 7",
     genderWear: "Men's Shoes",
     gender: "Men",
-    boy: "boy",
-
     color: 6,
     price: 19.5,
   },
@@ -232,6 +236,8 @@ export const shop = [
     title: "Nike Yellow Bag",
     genderWear: "Kid's Bag",
     gender: "Kid",
+    kid: "girl",
+
     color: 3,
     price: 18.0,
   },
@@ -243,8 +249,7 @@ export const shop = [
     title: "Nike Air Zoom Victory Tour",
     genderWear: "Men's Shoes",
     gender: "Men",
-
-    boy: "boy",
+    kid: "boy",
     color: 4,
     price: 17.5,
   },
@@ -255,8 +260,6 @@ export const shop = [
     material: "Just In",
     title: "Nike Air Zoom Structure 24",
     genderWear: "Women's Shoes",
-    girl: "girl",
-
     gender: "Women",
     color: 4,
     price: 16.5,

@@ -15,43 +15,65 @@ const ShopContent = ({ category }) => {
     kids: true,
     price: true,
   });
+  const [priceFilter, setPriceFilter] = useState([]);
   const router = useRouter();
-  //checked
-  const handleChecked = (gender) => {
-    setChecked((prev) =>
-      prev.includes(gender)
-        ? prev.filter((g) => g !== gender)
-        : [...prev, gender]
+
+  // Handle checked
+  const handleChecked = (value, type) => {
+    setChecked((prev) => {
+      if (type === "gender" || type === "kids") {
+        return prev.includes(value)
+          ? prev.filter((g) => g !== value)
+          : [...prev, value];
+      }
+      return prev;
+    });
+  };
+
+  // Handle price filter
+  const handlePriceFilter = (price) => {
+    setPriceFilter((prev) =>
+      prev.includes(price) ? prev.filter((p) => p !== price) : [...prev, price]
     );
   };
 
   useEffect(() => {
-    if (category) {
-      const categoryFiltered = shop.filter(
-        (item) => item.gender == category[0].toUpperCase() + category.slice(1)
-      );
-      setCategoryFilter(categoryFiltered);
-    } else if (checked.length !== 0) {
-      const categoryFiltered = shop.filter((item) =>
-        checked.includes(item.gender)
-      );
-      setCategoryFilter(categoryFiltered);
-    } else if (checked.length === 0) {
-      setCategoryFilter(shop);
-    } else {
-      setCategoryFilter(shop);
-    }
-  }, [category, checked, shop]);
+    let categoryFiltered = shop;
 
-  //dropdown
+    if (category) {
+      categoryFiltered = categoryFiltered.filter(
+        (item) => item.gender === category[0].toUpperCase() + category.slice(1)
+      );
+    }
+
+    if (checked.length !== 0) {
+      categoryFiltered = categoryFiltered.filter(
+        (item) => checked.includes(item.gender) || checked.includes(item.kid)
+      );
+    }
+
+    if (priceFilter.length !== 0) {
+      categoryFiltered = categoryFiltered.filter((item) => {
+        return priceFilter.some((price) => {
+          if (price === "under-20") return item.price < 20;
+          if (price === "above-20") return item.price >= 20;
+        });
+      });
+    }
+
+    setCategoryFilter(categoryFiltered);
+  }, [category, checked, priceFilter]);
+
+  // Handle dropdown
   const handleDropdown = (value) => {
     setIsDropdown({ ...isDropdown, [value]: !isDropdown[value] });
   };
 
-  //puah to another page
+  // Push to another page
   const handleItemClick = (data) => {
     router.push(`/selectedItem/${data.id}`);
   };
+
   return (
     <div className="mt-[78px] relative">
       <div className="flex justify-between items-center mx-[48px] max-w-[1344px] w-full">
@@ -106,7 +128,7 @@ const ShopContent = ({ category }) => {
           </ul>
           <hr />
           {/* Gender */}
-          <div className={`pb-[24px] ${category && "hidden"}`}>
+          <div className="pb-[24px]">
             <div className="flex justify-between mt-[15px] items-center">
               <p className="font-helvetica font-medium text-[16px]">Gender</p>
               <div
@@ -128,7 +150,7 @@ const ShopContent = ({ category }) => {
                     name="men"
                     id="men"
                     className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    onChange={() => handleChecked("Men")}
+                    onChange={() => handleChecked("Men", "gender")}
                     checked={checked.includes("Men")}
                   />
                   <label htmlFor="men">Men</label>
@@ -139,7 +161,7 @@ const ShopContent = ({ category }) => {
                     name="women"
                     id="women"
                     className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    onChange={() => handleChecked("Women")}
+                    onChange={() => handleChecked("Women", "gender")}
                     checked={checked.includes("Women")}
                   />
                   <label htmlFor="women">Women</label>
@@ -150,7 +172,7 @@ const ShopContent = ({ category }) => {
                     name="kid"
                     id="kid"
                     className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    onChange={() => handleChecked("Kid")}
+                    onChange={() => handleChecked("Kid", "gender")}
                     checked={checked.includes("Kid")}
                   />
                   <label htmlFor="kid">Kid</label>
@@ -182,7 +204,7 @@ const ShopContent = ({ category }) => {
                     name="boys"
                     id="boys"
                     className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    onChange={() => handleChecked("boy")}
+                    onChange={() => handleChecked("boy", "kids")}
                     checked={checked.includes("boy")}
                   />
                   <label htmlFor="boys">Boys</label>
@@ -193,7 +215,7 @@ const ShopContent = ({ category }) => {
                     name="girls"
                     id="girls"
                     className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
-                    onChange={() => handleChecked("girl")}
+                    onChange={() => handleChecked("girl", "kids")}
                     checked={checked.includes("girl")}
                   />
                   <label htmlFor="girls">Girls</label>
@@ -227,6 +249,8 @@ const ShopContent = ({ category }) => {
                     name="under-20"
                     id="under-20"
                     className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
+                    onChange={() => handlePriceFilter("under-20")}
+                    checked={priceFilter.includes("under-20")}
                   />
                   <label htmlFor="under-20">Under $20</label>
                 </div>
@@ -236,6 +260,8 @@ const ShopContent = ({ category }) => {
                     name="above-20"
                     id="above-20"
                     className="mr-2  w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
+                    onChange={() => handlePriceFilter("above-20")}
+                    checked={priceFilter.includes("above-20")}
                   />
                   <label htmlFor="above-20">$21 - Above</label>
                 </div>
@@ -245,7 +271,7 @@ const ShopContent = ({ category }) => {
           <hr />
         </div>
         <div>
-          {/* filter item based on category */}
+          {/* Filter item based on category */}
           <div
             className={`grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px]`}
           >
