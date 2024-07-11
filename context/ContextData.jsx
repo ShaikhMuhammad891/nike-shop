@@ -6,7 +6,7 @@ const ShopContext = createContext();
 export const useShop = () => useContext(ShopContext);
 
 export const ShopProvider = ({ children }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState([]);
 
   return (
     <ShopContext.Provider value={{ selectedItem, setSelectedItem }}>

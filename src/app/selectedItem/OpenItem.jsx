@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ShoeSize } from "../../../utils/shop"; // Assuming this imports your shoe size data
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -11,13 +11,18 @@ import { useRouter } from "next/navigation";
 const OpenItem = (props) => {
   const { openData } = props;
   const [selectedSize, setSelectedSize] = useState(null);
-  const [chooseButton, setChooseButton] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isClickedNext, setIsClickedNext] = useState(false);
-  const [isClickedPrev, setIsClickedPrev] = useState(false);
   const [isClicked, setIsClicked] = useState("");
+  const [data, setData] = useState([]);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (openData) {
+      data.push(openData)
+    }
+  }, []);
+  console.log(data , openData, "i get");
 
   const SlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
@@ -31,9 +36,6 @@ const OpenItem = (props) => {
       swiperRef.current.swiper.slideNext();
     }
     event.stopPropagation();
-
-    setIsClickedNext(true);
-    setIsClickedPrev(false);
   };
 
   const goPrev = (event) => {
@@ -42,19 +44,11 @@ const OpenItem = (props) => {
       swiperRef.current.swiper.slidePrev();
     }
     event.stopPropagation();
-
-    setIsClickedPrev(true);
-    setIsClickedNext(false);
   };
 
   const handleSizeClick = (size) => {
     setSelectedSize(size);
-    console.log();
   };
-
-  // const changeColor = (bagOrFav) => {
-  //   setIsClicked(bagOrFav);
-  // };
 
   return (
     <>

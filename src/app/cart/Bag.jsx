@@ -1,10 +1,13 @@
 "use client";
 import { DeleteLogo, Heart } from "@/icons/logos";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useShop } from "../../../context/ContextData";
 
 const Bag = (props) => {
   const [isClicked, setIsClicked] = useState(false);
+  const { selectedItem } = useShop();
   const { bagData } = props;
+
   return (
     <div className=" max-w-[1100px] mx-auto my-[40px]">
       <div className=" flex gap-[18px] w-full">
@@ -32,7 +35,9 @@ const Bag = (props) => {
               </div>
               <div className=" max-w-[537px] flex justify-between w-full">
                 <div>
-                  <p className=" text-[15px] leading-7 font-inter">{bagData.title}</p>
+                  <p className=" text-[15px] leading-7 font-inter">
+                    {bagData.title}
+                  </p>
                   <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
                     {bagData.genderWear}
                   </p>
@@ -64,7 +69,9 @@ const Bag = (props) => {
           <p className=" text-[21px] leading-[33px] font-inter">Summary</p>
           <div className=" flex justify-between w-full mt-[25px]">
             <p className=" text-[15px] leading-7 font-inter">Subtotal</p>
-            <p className=" text-[15px] leading-7 font-inter">ÙSD: $ {bagData.price}</p>
+            <p className=" text-[15px] leading-7 font-inter">
+              ÙSD: $ {bagData.price}
+            </p>
           </div>
           <div className=" mt-[8px] flex justify-between w-full pb-[20px]">
             <p className=" text-[15px] leading-7 font-inter">
@@ -76,7 +83,9 @@ const Bag = (props) => {
 
           <div className=" my-[20px] flex justify-between w-full ">
             <p className=" text-[14px] leading-7 font-inter">Total</p>
-            <p className=" text-[14px] leading-7 font-medium font-inter">USD : $ {bagData.price}</p>
+            <p className=" text-[14px] leading-7 font-medium font-inter">
+              USD : $ {bagData.price}
+            </p>
           </div>
           <hr />
 

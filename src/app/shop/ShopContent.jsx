@@ -14,6 +14,7 @@ const ShopContent = ({ category }) => {
     gender: true,
     kids: true,
     price: true,
+    sort: false,
   });
   const [priceFilter, setPriceFilter] = useState([]);
   const router = useRouter();
@@ -104,7 +105,7 @@ const ShopContent = ({ category }) => {
           )}
         </div>
 
-        <div className="flex items-center gap-[32px]">
+        <div className={`flex items-center gap-[32px] ${category && "hidden"}`}>
           <div className="flex items-center gap-[7.91px]">
             <p className="font-helvetica text-[16px] leading-[28px]">
               Hide Filters
@@ -115,8 +116,14 @@ const ShopContent = ({ category }) => {
           </div>
           <div className="flex items-center gap-[7.8px]">
             <p className="font-helvetica text-[16px] leading-[28px]">Sort By</p>
-            <div className="">
-              <ArrowDrop />
+            <div className="" onClick={() => handleDropdown("sort")}>
+              {isDropdown.sort ? (
+                <div className=" rotate-180">
+                  <ArrowDrop />
+                </div>
+              ) : (
+                <ArrowDrop />
+              )}
             </div>
           </div>
         </div>
@@ -128,7 +135,7 @@ const ShopContent = ({ category }) => {
             {clothingItems.map((items, index) => (
               <li
                 key={index}
-                className="font-helvetica font-medium text-[15px] leading-[17px] max-w-[161.17px]"
+                className="font-helvetica font-medium text-[15px] leading-[17px] max-w-[161.17px] cursor-pointer"
               >
                 {items}
               </li>
@@ -136,7 +143,7 @@ const ShopContent = ({ category }) => {
           </ul>
           <hr />
           {/* Gender */}
-          <div className="pb-[24px]">
+          <div className={`pb-[24px] ${category && "hidden"}`}>
             <div className="flex justify-between mt-[15px] items-center">
               <p className="font-helvetica font-medium text-[16px]">Gender</p>
               <div
@@ -179,7 +186,7 @@ const ShopContent = ({ category }) => {
                     type="checkbox"
                     name="kid"
                     id="kid"
-                    className="mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]"
+                    className={`mr-2 w-[20px] h-[20px] appearance-none border-[#CCCCCC] border-[1px] rounded-[4px]}`}
                     onChange={() => handleChecked("Kid", "gender")}
                     checked={checked.includes("Kid")}
                   />
@@ -190,7 +197,7 @@ const ShopContent = ({ category }) => {
           </div>
           <hr />
           {/* Kids */}
-          <div className="pb-[24px]">
+          <div className={`pb-[24px] ${category && "hidden"}`}>
             <div className="flex justify-between mt-[15px] items-center">
               <p className="font-helvetica font-medium text-[16px]">Kids</p>
               <div
@@ -271,7 +278,7 @@ const ShopContent = ({ category }) => {
                     onChange={() => handlePriceFilter("above-20")}
                     checked={priceFilter.includes("above-20")}
                   />
-                  <label htmlFor="above-20">$21 - Above</label>
+                  <label htmlFor="above-20">$20 - Above</label>
                 </div>
               </div>
             )}
