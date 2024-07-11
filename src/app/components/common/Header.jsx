@@ -68,7 +68,7 @@ const Header = () => {
           <Link
             href={{
               pathname: "/shop",
-              query: { category: "men" },
+              query: { category: "Men" },
             }}
           >
             <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
@@ -78,7 +78,7 @@ const Header = () => {
           <Link
             href={{
               pathname: "/shop",
-              query: { category: "women" },
+              query: { category: "Women" },
             }}
           >
             <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
@@ -88,7 +88,7 @@ const Header = () => {
           <Link
             href={{
               pathname: "/shop",
-              query: { category: "kid" },
+              query: { category: "Kid" },
             }}
           >
             <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer ">
@@ -98,7 +98,7 @@ const Header = () => {
           <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
             Sale
           </li>
-          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica">
+          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
             SNKRS
           </li>
         </ul>

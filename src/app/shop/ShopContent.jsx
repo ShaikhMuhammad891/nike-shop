@@ -16,11 +16,6 @@ const ShopContent = ({ category }) => {
     price: true,
   });
   const [priceFilter, setPriceFilter] = useState([]);
-  const categoryMap = {
-    men: "Men",
-    women: "Women",
-    kid: "Kid",
-  };
   const router = useRouter();
 
   // Handle checked
@@ -47,17 +42,8 @@ const ShopContent = ({ category }) => {
 
     if (category) {
       categoryFiltered = categoryFiltered.filter(
-        (item) => item.gender === category[0].toUpperCase() + category.slice(1)
+        (item) => item.gender === category
       );
-      const normalizedCategory = category.toLowerCase();
-      if (categoryMap[normalizedCategory]) {
-        setChecked((prev) => {
-          if (!prev.includes(categoryMap[normalizedCategory])) {
-            return [...prev, categoryMap[normalizedCategory]];
-          }
-          return prev;
-        });
-      }
     }
 
     if (checked.length !== 0) {
@@ -77,6 +63,14 @@ const ShopContent = ({ category }) => {
 
     setCategoryFilter(categoryFiltered);
   }, [category, checked, priceFilter]);
+
+  useEffect(() => {
+    if (category) {
+      setChecked([category]);
+    } else {
+      setChecked([]);
+    }
+  }, [category]);
 
   // Handle dropdown
   const handleDropdown = (value) => {
