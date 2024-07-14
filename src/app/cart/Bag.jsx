@@ -5,8 +5,23 @@ import { useShop } from "../../../context/ContextData";
 
 const Bag = (props) => {
   const [isClicked, setIsClicked] = useState(false);
-  const { selectedItem } = useShop();
+  const [data, setData] = useState([]);
   const { bagData } = props;
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("bag"));
+    setData(data);
+  }, []);
+
+  const handleDelete = (id) => {
+    const newData = JSON.parse(localStorage.getItem("bag"));
+    const index = newData.findIndex((item) => item.id === id);
+    if (index !== -1) {
+      newData.splice(index, 1);
+    }
+    localStorage.setItem("bag", JSON.stringify(newData));
+    setData(newData);
+  };
 
   return (
     <div className=" max-w-[1100px] mx-auto my-[40px]">
@@ -28,41 +43,43 @@ const Bag = (props) => {
 
           {/* bag */}
           <div>
-            <p className=" mt-[15px]">Bag</p>
-            <div className=" flex w-full gap-[30px] mt-[25px]">
-              <div className=" max-w-[150px]">
-                <img src={bagData.img} alt="" />
-              </div>
-              <div className=" max-w-[537px] flex justify-between w-full">
-                <div>
-                  <p className=" text-[15px] leading-7 font-inter">
-                    {bagData.title}
-                  </p>
-                  <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
-                    {bagData.genderWear}
-                  </p>
-                  <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
-                    Green {bagData.color}
-                  </p>
-                  <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
-                    Quantity {bagData.id}
-                  </p>
-                  <div className=" flex gap-[16px] mt-[28px]">
-                    <div>
-                      <Heart />
-                    </div>
-                    <div>
-                      <DeleteLogo />
+            <p className=" mt-[15px] leading-[33px] text-[22px] font-medium font-inter">Bag</p>
+            {data.map((bagData, index) => (
+              <div key={index} className=" flex w-full gap-[30px] mt-[25px]">
+                <div className=" max-w-[150px]">
+                  <img src={bagData.img} alt="" />
+                </div>
+                <div className=" max-w-[537px] flex justify-between w-full">
+                  <div>
+                    <p className=" text-[15px] leading-7 font-inter font-medium">
+                      {bagData.title}
+                    </p>
+                    <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
+                      {bagData.genderWear}
+                    </p>
+                    <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
+                      Green {bagData.color}
+                    </p>
+                    <p className=" text-[15px] leading-7 font-inter text-[#757575] ">
+                      Quantity {bagData.id}
+                    </p>
+                    <div className=" flex gap-[16px] mt-[28px]">
+                      <div>
+                        <Heart />
+                      </div>
+                      <div onClick={() => handleDelete(bagData.id)}>
+                        <DeleteLogo />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <p className=" text-[15px] leading-7">
-                    USD: ${bagData.price}
-                  </p>
+                  <div>
+                    <p className=" text-[15px] leading-7">
+                      USD: ${bagData.price}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className=" max-w-[350.67px] w-full">

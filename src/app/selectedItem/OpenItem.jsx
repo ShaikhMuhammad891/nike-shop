@@ -14,19 +14,10 @@ const OpenItem = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isClicked, setIsClicked] = useState("");
   const [data, setData] = useState([]);
-
   const router = useRouter();
-
-  useEffect(() => {
-    if (openData) {
-      data.push(openData)
-    }
-  }, []);
-  console.log(data , openData, "i get");
 
   const SlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
-    console.log(activeIndex);
   };
 
   const swiperRef = useRef(null);
@@ -50,9 +41,25 @@ const OpenItem = (props) => {
     setSelectedSize(size);
   };
 
+  const handleAdd = (value) => {
+    if (value === "bag") {
+      const bag = JSON.parse(localStorage.getItem("bag")) || [];
+      const updatedBag = [...bag, openData];
+      localStorage.setItem("bag", JSON.stringify(updatedBag));
+    } else if (value === "fav") {
+      const fav = JSON.parse(localStorage.getItem("fav")) || [];
+      const updatedFav = [...fav, openData];
+      localStorage.setItem("fav", JSON.stringify(updatedFav));
+    }
+    router.push(`/cart/${openData.id}`);
+  };
+
   return (
     <>
       <div className="mt-[104px] ">
+        {data.map((el, i) => (
+          <p key={i}>{el.title}</p>
+        ))}
         <div className="flex gap-[72px] max-w-[1299px] mx-auto ">
           <div className="flex flex-wrap max-w-[851px] w-full gap-[12px]">
             <img src={openData.img} alt="" className=" h-[400px] w-[419.5px]" />
@@ -105,7 +112,7 @@ const OpenItem = (props) => {
                 <button
                   onClick={() => {
                     setIsClicked("bag");
-                    router.push(`/cart/${openData.id}`);
+                    handleAdd("bag");
                   }}
                   className={`text-[#111111] border border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
                     isClicked === "bag" ? "bg-black text-white" : ""
@@ -114,7 +121,10 @@ const OpenItem = (props) => {
                   Add to Bag
                 </button>
                 <button
-                  onClick={() => setIsClicked("fav")}
+                  onClick={() => {
+                    setIsClicked("fav");
+                    handleAdd("fav");
+                  }}
                   className={`text-[#111111] border border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
                     isClicked === "fav" && " bg-black text-white"
                   } `}

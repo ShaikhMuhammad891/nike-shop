@@ -18,11 +18,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${helvetica.variable} font-helvetica text-[#111111] ${inter.variable} `}
       >
-        <ShopProvider>
           <Header />
           {children}
           <Footer />
-        </ShopProvider>
       </body>
     </html>
   );
