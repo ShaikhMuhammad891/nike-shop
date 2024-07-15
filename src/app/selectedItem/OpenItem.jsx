@@ -51,7 +51,7 @@ const OpenItem = (props) => {
       const updatedFav = [...fav, openData];
       localStorage.setItem("fav", JSON.stringify(updatedFav));
     }
-    router.push(`/cart/${openData.id}`);
+    router.push("/cart");
   };
 
   return (

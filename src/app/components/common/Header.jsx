@@ -3,10 +3,12 @@ import { Cart, Heart, Line, NikeLogo, SearchIcon } from "@/icons/logos";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useShop } from "../../../../context/ContextData";
 
 const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const { bagCount, favCount } = useShop();
   return (
     <div className={`${pathname === "/delivery" && "hidden"}`}>
       <div className={`bg-[#F5F5F5] h-[36px] w-full flex items-center `}>
@@ -111,8 +113,36 @@ const Header = () => {
               placeholder="Search"
             />
           </div>
-          <Heart />
-          <Cart />
+          <div
+            className={`cursor-pointer flex gap-[18px] `}
+            onClick={() => router.push("/cart")}
+          >
+            <div className=" relative">
+              <p
+                className={`${
+                  favCount !== 0
+                    ? "absolute top-[-10px] right-[-16px] bg-black rounded-full text-white py-[1px] px-[6px] text-[12px]"
+                    : "hidden"
+                }`}
+              >
+                {favCount}
+              </p>
+
+              <Heart />
+            </div>
+            <div className=" relative">
+              <p
+                className={`${
+                  bagCount !== 0
+                    ? "absolute top-[-10px] right-[-16px] bg-black rounded-full text-white py-[1px] px-[6px] text-[12px]"
+                    : "hidden"
+                }`}
+              >
+                {bagCount}
+              </p>
+              <Cart />
+            </div>
+          </div>
         </div>
       </div>
       <div></div>
