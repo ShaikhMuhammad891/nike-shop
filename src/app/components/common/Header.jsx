@@ -4,11 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useShop } from "../../../../context/ContextData";
+import { signOut, useSession } from "next-auth/react";
 
 const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { bagCount, favCount } = useShop();
+  const session = useSession();
   return (
     <div className={`${pathname === "/delivery" && "hidden"}`}>
       <div className={`bg-[#F5F5F5] h-[36px] w-full flex items-center `}>
@@ -19,6 +21,8 @@ const Header = () => {
             width={24}
             height={24}
           />
+          <div>{session?.data?.user?.name}</div>
+
           <ul className=" flex gap-[15px] items-center">
             <li
               className=" text-[11px] font-[500] leading-[14px] cursor-pointer"
@@ -47,11 +51,24 @@ const Header = () => {
             <li>
               <Line />
             </li>
+            {!session && (
+              <>
+                <li
+                  onClick={() => router.push("/signin")}
+                  className=" text-[11px] font-[500] leading-[14px] cursor-pointer "
+                >
+                  Sign In
+                </li>
+                <li>
+                  <Line />
+                </li>
+              </>
+            )}
             <li
-              onClick={() => router.push("/signin")}
+              onClick={() => signOut()}
               className=" text-[11px] font-[500] leading-[14px] cursor-pointer "
             >
-              Sign In
+              Sign Out
             </li>
           </ul>
         </div>

@@ -1,8 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
 const ManageOrder = () => {
+  const [isClicked, setIsClicked] = useState(false);
   const router = useRouter();
   return (
     <div className=" mt-[131px] mb-[150px]">
@@ -30,7 +31,15 @@ const ManageOrder = () => {
           />
         </div>
 
-        <button className=" w-full bg-[#E5E5E5] text-[#757575] text-[15px] font-medium leading-6 py-[21.5px] rounded-[30px] mt-[44px]">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setIsClicked(!isClicked);
+          }}
+          className={`${
+            isClicked ? " bg-black text-white" : ""
+          }  w-full bg-[#E5E5E5] text-[#757575] text-[15px] font-medium leading-6 py-[21.5px] rounded-[30px] mt-[44px]`}
+        >
           Submit
         </button>
 
