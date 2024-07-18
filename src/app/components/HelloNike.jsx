@@ -11,7 +11,7 @@ const HelloNike = () => {
         <p className=" text-center font-normal font-helvetica text-[11px] leading-[24px] mt-[3px]">
           Download the app to access everything Nike.
           <span>
-            <span className=" underline">Get Your Great</span>
+            <span className=" underline cursor-pointer">Get Your Great</span>
           </span>
         </p>
       </div>

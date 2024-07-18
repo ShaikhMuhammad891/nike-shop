@@ -331,6 +331,39 @@ export const shop = [
     color: 7,
     price: 16.5,
   },
+  {
+    id: 1,
+    img: "/images/left-one.png",
+    brand: "Nike",
+    material: "Exclusive",
+    title: "Nike Dri-FIT ADV TechKnit Ultra",
+    genderWear: "Men's Short-Sleeve Running Top",
+    gender: "Men",
+    color: 1,
+    price: 12.995,
+  },
+  {
+    id: 2,
+    img: "/images/left-two.png",
+    brand: "Nike",
+    material: "Exclusive",
+    title: "Nike Dri-FIT Challenger",
+    genderWear: "Men's 18cm (approx.) 2-in-1 Versatile Shorts",
+    gender: "Men",
+    color: 2,
+    price: 14.995,
+  },
+  {
+    id: 3,
+    img: "/images/left-one.png",
+    brand: "Nike",
+    material: "Exclusive",
+    title: "Nike Dri-FIT ADV TechKnit Ultra",
+    genderWear: "Nike Dri-FIT ADV TechKnit Ultra",
+    gender: "Nike Dri-FIT ADV TechKnit Ultra", // This logic will determine the gender based on the string
+    color: 3,
+    price: 12.995,
+  },
 ];
 
 export const clothingItems = [

@@ -72,16 +72,16 @@ const Footer = () => {
                   ABOUT NIKE
                 </p>
                 <ul className=" mt-[14px] space-y-[17px]">
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
+                  <li className=" text-[12px] cursor-pointer text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
                     News
                   </li>
-                  <li className=" text-[12px] text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
+                  <li className=" text-[12px] cursor-pointer text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
                     Careers
                   </li>
-                  <li className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
+                  <li className=" text-[11px] cursor-pointer text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
                     Investors
                   </li>
-                  <li className=" text-[11px] text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
+                  <li className=" text-[11px] cursor-pointer text-[#7e7e7e] font-helvetica font-normal leading-[14px]">
                     Sustainability
                   </li>
                 </ul>
@@ -91,18 +91,22 @@ const Footer = () => {
               <img
                 src="/images/twitter.png"
                 alt=""
-                className=" w-[30px] h-[30px]"
+                className=" w-[30px] h-[30px] cursor-pointer"
               />
-              <img src="/images/fb.png" alt="" className=" w-[30px] h-[30px]" />
+              <img
+                src="/images/fb.png"
+                alt=""
+                className=" w-[30px] h-[30px] cursor-pointer"
+              />
               <img
                 src="/images/youtube.png"
                 alt=""
-                className=" w-[30px] h-[30px]"
+                className=" w-[30px] h-[30px] cursor-pointer"
               />
               <img
                 src="/images/insta.png"
                 alt=""
-                className=" w-[30px] h-[30px]"
+                className=" w-[30px] h-[30px] cursor-pointer"
               />
             </div>
           </div>

@@ -8,12 +8,14 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper/modules";
-import { LeftSwiper, RightSwiper } from "../../../utils/SwiperContent";
+import { shop } from "../../../utils/shop";
+import { useRouter } from "next/navigation";
 
 const SwiperLeft = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isClickedNext, setIsClickedNext] = useState(false);
   const [isClickedPrev, setIsClickedPrev] = useState(false);
+  const router = useRouter();
 
   const SlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
@@ -42,6 +44,7 @@ const SwiperLeft = () => {
     setIsClickedPrev(true);
     setIsClickedNext(false);
   };
+
   return (
     <>
       {/* left Swiper */}
@@ -79,8 +82,8 @@ const SwiperLeft = () => {
             spaceBetween={12}
             className=" mt-[12px] mb-[53px]"
           >
-            {LeftSwiper.map((data, index) => (
-              <SwiperSlide key={index}>
+            {shop.map((data, index) => (
+              <SwiperSlide key={data.id} onClick={() => router.push(`/selectedItem/${data.id}`)}>
                 <div>
                   <img src={data.img} alt="" />
                   <div className=" max-w-[284px]">

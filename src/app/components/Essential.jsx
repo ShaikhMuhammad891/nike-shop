@@ -37,21 +37,40 @@ const Essential = () => {
         <div className=" mt-[25px] flex justify-between">
           <div className=" relative">
             <img src="/images/essential-one.png" alt="" />
-            <div className=" absolute bottom-12 left-10">
-              <Button title="Men's" bgcolor="#ffffff" />
-            </div>
+            <Link
+              href={{
+                pathname: "/shop",
+                query: { category: "Men" },
+              }}
+            >
+              <div className=" absolute bottom-12 left-10">
+                <Button title="Men's" bgcolor="#ffffff" />
+              </div>
+            </Link>
           </div>
           <div className=" relative">
             <img src="/images/essential-two.png" alt="" />
-            <div className=" absolute bottom-12 left-10">
-              <Button title="Women's" bgcolor="#ffffff" />
-            </div>
+            <Link
+              href={{
+                pathname: "/shop",
+                query: { category: "Women" },
+              }}
+            >
+              <div className=" absolute bottom-12 left-10">
+                <Button title="Women's" bgcolor="#ffffff" />
+              </div>
+            </Link>
           </div>
           <div className=" relative">
             <img src="/images/essential-three.png" alt="" />
-            <div className=" absolute bottom-12 left-10">
-              <Button title="Kid's" bgcolor="#ffffff" />
-            </div>
+            <Link href={{
+              pathname: "/shop",
+              query: { category: "Kid" },
+            }}>
+              <div className=" absolute bottom-12 left-10">
+                <Button title="Kid's" bgcolor="#ffffff" />
+              </div>
+            </Link>
           </div>
         </div>
 
@@ -59,16 +78,16 @@ const Essential = () => {
           <div className=" max-w-[184px] w-full">
             <p className=" font-helvetica text-[15px] leading-[24px]">Icons</p>
             <ul className=" mt-[24px] space-y-[16px]">
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575] cursor-pointer">
                 Air Force 1
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575] cursor-pointer">
                 Huarache
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575] cursor-pointer">
                 Air Max 90
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575] cursor-pointer">
                 Air Max 95
               </li>
             </ul>
@@ -76,16 +95,16 @@ const Essential = () => {
           <div className=" max-w-[184px] w-full">
             <p className=" font-helvetica text-[15px] leading-[24px]">Shoes</p>
             <ul className=" mt-[24px] space-y-[16px]">
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] cursor-pointer leading-[24px] text-[#757575]">
                 All Shoes
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] cursor-pointer leading-[24px] text-[#757575]">
                 Custom Shoes
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] cursor-pointer leading-[24px] text-[#757575]">
                 Jordan Shoes
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] cursor-pointer leading-[24px] text-[#757575]">
                 Running Shoes
               </li>
             </ul>
@@ -95,16 +114,16 @@ const Essential = () => {
               Clothing
             </p>
             <ul className=" mt-[24px] space-y-[16px]">
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] cursor-pointer text-[#757575]">
                 All Clothing
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] cursor-pointer text-[#757575]">
                 Modest Wear
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] cursor-pointer text-[#757575]">
                 Hoodies and Pullovers
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] cursor-pointer text-[#757575]">
                 Shirts & Tops
               </li>
             </ul>
@@ -112,16 +131,16 @@ const Essential = () => {
           <div className=" max-w-[184px] w-full">
             <p className=" font-helvetica text-[15px] leading-[24px]">Kids'</p>
             <ul className=" mt-[24px] space-y-[16px]">
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] cursor-pointer text-[#757575]">
                 Infant & Toddler Shoes
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] cursor-pointer text-[#757575]">
                 Kids' Shoes
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] cursor-pointer text-[#757575]">
                 Kids' Jordan Shoes
               </li>
-              <li className=" font-helvetica text-[15px] leading-[24px] text-[#757575]">
+              <li className=" font-helvetica text-[15px] leading-[24px] cursor-pointer text-[#757575]">
                 Kids' Basketball Shoes
               </li>
             </ul>

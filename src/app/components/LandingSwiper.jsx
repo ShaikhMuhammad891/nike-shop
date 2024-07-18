@@ -12,15 +12,18 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 import { ShoeSwiper } from "../../../utils/SwiperContent";
+import { shop } from "../../../utils/shop";
+import { useRouter } from "next/navigation";
 
 const LandingSwiper = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isClickedNext, setIsClickedNext] = useState(false);
   const [isClickedPrev, setIsClickedPrev] = useState(false);
+  const router = useRouter();
 
   const SlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
-    console.log(activeIndex)
+    console.log(activeIndex);
   };
 
   const swiperRef = useRef(null);
@@ -44,6 +47,10 @@ const LandingSwiper = () => {
 
     setIsClickedPrev(true);
     setIsClickedNext(false);
+  };
+
+  const handleSubmit = (id) => {
+    router.push(`selectedItem/${id}`);
   };
   return (
     <>
@@ -84,10 +91,17 @@ const LandingSwiper = () => {
             spaceBetween={12}
             className=""
           >
-            {ShoeSwiper.map((data, index) => (
+            {shop.map((data, index) => (
               <SwiperSlide key={index}>
-                <div className=" mb-[30px]">
-                  <img src={data.img} alt="" />
+                <div
+                  className=" mb-[30px] cursor-pointer "
+                  onClick={() => handleSubmit(data.id)}
+                >
+                  <img
+                    src={data.img}
+                    alt=""
+                    className=" max-w-[441.36px] max-h-[441.36px] h-full w-full"
+                  />
                   <div className="mt-[21px] flex justify-between">
                     <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px]">
                       {data.title}

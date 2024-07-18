@@ -42,15 +42,23 @@ const OpenItem = (props) => {
   };
 
   const handleAdd = (value) => {
+    if (selectedSize === null) {
+      alert("Please select a size before adding to bag or favorites.");
+      return;
+    }
+
+    const itemWithSize = { ...openData, selectedSize };
+
     if (value === "bag") {
       const bag = JSON.parse(localStorage.getItem("bag")) || [];
-      const updatedBag = [...bag, openData];
+      const updatedBag = [...bag, itemWithSize];
       localStorage.setItem("bag", JSON.stringify(updatedBag));
     } else if (value === "fav") {
       const fav = JSON.parse(localStorage.getItem("fav")) || [];
-      const updatedFav = [...fav, openData];
+      const updatedFav = [...fav, itemWithSize];
       localStorage.setItem("fav", JSON.stringify(updatedFav));
     }
+
     router.push("/cart");
   };
 
@@ -114,7 +122,7 @@ const OpenItem = (props) => {
                     setIsClicked("bag");
                     handleAdd("bag");
                   }}
-                  className={`text-[#111111] border border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
+                  className={`text-[#111111] border font-inter border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
                     isClicked === "bag" ? "bg-black text-white" : ""
                   }`}
                 >
@@ -125,7 +133,7 @@ const OpenItem = (props) => {
                     setIsClicked("fav");
                     handleAdd("fav");
                   }}
-                  className={`text-[#111111] border border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
+                  className={`text-[#111111] border font-inter border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
                     isClicked === "fav" && " bg-black text-white"
                   } `}
                 >
@@ -134,13 +142,13 @@ const OpenItem = (props) => {
               </div>
 
               <div className=" mt-[48px]">
-                <p className=" text-[14px] leading-[28px] text-[#111111] font-normal">
+                <p className=" text-[14px] font-inter leading-[28px] text-[#111111] font-normal">
                   {openData?.description}
                 </p>
-                <p className=" mt-[16px] text-[16px] leading-[24px] font-normal ml-[16px]">
+                <p className=" mt-[16px] text-[16px] leading-[24px] font-inter font-normal ml-[16px]">
                   Colour shown : {openData?.color}
                 </p>
-                <p className=" font-medium text-[15px] leading-[24px] mt-[26px]">
+                <p className=" font-medium font-inter text-[15px] leading-[24px] mt-[26px]">
                   View Product Details
                 </p>
               </div>
