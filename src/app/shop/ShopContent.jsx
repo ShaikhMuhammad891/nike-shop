@@ -9,6 +9,7 @@ import { useShop } from "../../../context/ContextData";
 
 const ShopContent = ({ category }) => {
   const [categoryFilter, setCategoryFilter] = useState([]);
+  const [hideFilter, setHideFilter] = useState(false);
   const [checked, setChecked] = useState([]);
   const [isDropdown, setIsDropdown] = useState({
     gender: true,
@@ -17,6 +18,8 @@ const ShopContent = ({ category }) => {
     sort: false,
   });
   const [priceFilter, setPriceFilter] = useState([]);
+  const [sortOption, setSortOption] = useState(null);
+
   const router = useRouter();
 
   // Handle checked
@@ -27,9 +30,9 @@ const ShopContent = ({ category }) => {
           ? prev.filter((g) => g !== value)
           : [...prev, value];
       }
-      return prev;
     });
   };
+  console.log(checked, "checkbox");
 
   // Handle price filter
   const handlePriceFilter = (price) => {
@@ -62,8 +65,15 @@ const ShopContent = ({ category }) => {
       });
     }
 
+    // Sort items based on sort option
+    if (sortOption === "high-to-low") {
+      categoryFiltered = categoryFiltered.sort((a, b) => b.price - a.price);
+    } else if (sortOption === "low-to-high") {
+      categoryFiltered = categoryFiltered.sort((a, b) => a.price - b.price);
+    }
+
     setCategoryFilter(categoryFiltered);
-  }, [category, checked, priceFilter]);
+  }, [category, checked, priceFilter, sortOption, isDropdown]);
 
   useEffect(() => {
     if (category) {
@@ -78,6 +88,9 @@ const ShopContent = ({ category }) => {
     setIsDropdown({ ...isDropdown, [value]: !isDropdown[value] });
   };
 
+  const handleSortOption = (option) => {
+    setSortOption(option);
+  };
   // Push to another page
   const handleItemClick = (data) => {
     router.push(`/selectedItem/${data.id}`);
@@ -106,7 +119,10 @@ const ShopContent = ({ category }) => {
         </div>
 
         <div className={`flex items-center gap-[32px] ${category && "hidden"}`}>
-          <div className="flex items-center gap-[7.91px]">
+          <div
+            className="flex items-center gap-[7.91px] cursor-pointer"
+            onClick={() => setHideFilter(!hideFilter)}
+          >
             <p className="font-helvetica text-[16px] leading-[28px]">
               Hide Filters
             </p>
@@ -129,13 +145,45 @@ const ShopContent = ({ category }) => {
         </div>
       </div>
 
+      {/* sort */}
+      {isDropdown.sort && (
+        <ul className=" absolute right-11 bg-white py-2 px-4 space-y-3 translate-y-4 transition-all duration-300">
+          <li
+            className={`font-inter font-medium text-[16px] leading-7 cursor-pointer hover:scale-105 duration-300 ${
+              sortOption === "high-to-low" && " border-b border-black"
+            } `}
+            onClick={() => {
+              handleSortOption("high-to-low");
+              handleDropdown("sort");
+            }}
+          >
+            High-To-Low
+          </li>
+          <li
+            className={`font-inter font-medium text-[16px] leading-7 cursor-pointer hover:scale-105 duration-300 ${
+              sortOption === "low-to-high" && " border-b border-black"
+            }`}
+            onClick={() => {
+              handleSortOption("low-to-high");
+              handleDropdown("sort");
+            }}
+          >
+            Low-To-High
+          </li>
+        </ul>
+      )}
+
       <div className="mt-[30px] flex gap-[48px] max-w-[1344px] mx-auto   ">
-        <div className=" max-w-[260px] w-full">
+        <div
+          className={`max-w-[260px] w-full transition ease-in duration-500   ${
+            hideFilter && " -translate-x-[420px] transition duration-300"
+          }`}
+        >
           <ul className="space-y-[14.9px] max-h-[400px] overflow-y-auto pb-[50px] mb-[52.59px] ">
             {clothingItems.map((items, index) => (
               <li
                 key={index}
-                className="font-helvetica font-medium text-[15px] leading-[17px] max-w-[161.17px] cursor-pointer"
+                className="font-helvetica font-medium text-[15px] leading-[17px] max-w-[161.17px] cursor-pointer hover:scale-105 duration-100 hover:translate-x-2"
               >
                 {items}
               </li>
@@ -288,13 +336,16 @@ const ShopContent = ({ category }) => {
         <div>
           {/* Filter item based on category */}
           <div
-            className={`grid grid-cols-3 max-w-[1092px] gap-x-[16px] gap-y-[18px] mb-[140px]`}
+            className={`grid grid-cols-3 max-w-[1092px] gap-x-[16px] transition duration-500 gap-y-[18px] mb-[140px]  ${
+              hideFilter &&
+              "max-w-[1344px] -translate-x-[300px] transition duration-500  w-full"
+            }`}
           >
             {categoryFilter.map((data, index) => (
               <div
                 key={index}
                 onClick={() => handleItemClick(data)}
-                className="cursor-pointer max-w-[348px] w-full pb-[42px]"
+                className={`cursor-pointer max-w-[348px] w-full pb-[42px] hover:scale-105 transition duration-150`}
               >
                 <img src={data.img} alt="" className="w-[348px] h-[348px]" />
                 <p className="text-[#9E3500] font-helvetica font-medium text-[15px] leading-[28px] mt-[9px]">

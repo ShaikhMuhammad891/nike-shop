@@ -24,14 +24,24 @@ const Bag = () => {
   }, [bag, setBagCount]);
 
   const handleDelete = (id) => {
-    const newData = bag.filter((item) => item.id !== id);
+    const newData = JSON.parse(localStorage.getItem("bag"));
+    const index = newData.findIndex((item) => item.id === id);
+    if (index !== -1) {
+      newData.splice(index, 1);
+    }
+
     localStorage.setItem("bag", JSON.stringify(newData));
     setBag(newData);
   };
 
   const addToFav = (id) => {
-    const newBag = bag.filter((item) => item.id !== id);
-    const deletedBag = bag.find((item) => item.id === id);
+    const newBag = JSON.parse(localStorage.getItem("bag"));
+    const deletedBag = newBag.find((item) => item.id === id);
+    const index = newBag.findIndex((item) => item.id === id);
+
+    if (index !== -1) {
+      newBag.splice(index, 1);
+    }
     localStorage.setItem("bag", JSON.stringify(newBag));
     setBag(newBag);
 
@@ -48,18 +58,28 @@ const Bag = () => {
       <div className="flex gap-[18px] w-full">
         <div className="max-w-[723.33px] w-full">
           <div className="bg-[#f5f5f5] py-[14px] pl-[20px] w-full">
-            <p className="text-[13px] leading-[14px] font-medium font-inter">Free Delivery</p>
+            <p className="text-[13px] leading-[14px] font-medium font-inter">
+              Free Delivery
+            </p>
             <div className="flex gap-[18px] mt-[4px]">
-              <p className="text-[11px] leading-6 font-inter">Applies to orders of ₹ 14 000.00 or more.</p>
-              <p className="underline text-[11px] leading-6 font-medium font-inter">View details</p>
+              <p className="text-[11px] leading-6 font-inter">
+                Applies to orders of ₹ 14 000.00 or more.
+              </p>
+              <p className="underline text-[11px] leading-6 font-medium font-inter">
+                View details
+              </p>
             </div>
           </div>
 
           <div>
-            <p className="mt-[15px] leading-[33px] text-[22px] font-medium font-inter">Bag</p>
+            <p className="mt-[15px] leading-[33px] text-[22px] font-medium font-inter">
+              Bag
+            </p>
 
             {bag.length === 0 ? (
-              <p className="font-inter text-[15px] leading-6">There are no items saved to your Bag</p>
+              <p className="font-inter text-[15px] leading-6">
+                There are no items saved to your Bag
+              </p>
             ) : (
               bag.map((bagData, index) => (
                 <div key={index} className="flex w-full gap-[30px] mt-[25px]">
@@ -68,25 +88,43 @@ const Bag = () => {
                   </div>
                   <div className="max-w-[537px] flex justify-between w-full">
                     <div>
-                      <p className="text-[15px] leading-7 font-inter font-medium">{bagData.title}</p>
-                      <p className="text-[15px] leading-7 font-inter text-[#757575]">{bagData.genderWear}</p>
-                      <p className="text-[15px] leading-7 font-inter text-[#757575]">Green {bagData.color}</p>
+                      <p className="text-[15px] leading-7 font-inter font-medium">
+                        {bagData.title}
+                      </p>
+                      <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                        {bagData.genderWear}
+                      </p>
+                      <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                        Green {bagData.color}
+                      </p>
                       <div className=" flex items-center gap-[49px]">
-                      <p className="text-[15px] leading-7 font-inter text-[#757575]">Size {bagData.selectedSize}</p>
-                      <p className="text-[15px] leading-7 font-inter text-[#757575]">Quantity {bagData.id}</p>
+                        <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                          Size {bagData.selectedSize}
+                        </p>
+                        <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                          Quantity {bagData.id}
+                        </p>
                       </div>
 
                       <div className="flex gap-[16px] mt-[28px]">
-                        <div onClick={() => addToFav(bagData.id)}>
+                        <div
+                          onClick={() => addToFav(bagData.id)}
+                          className=" cursor-pointer hover:scale-110 duration-150"
+                        >
                           <Heart />
                         </div>
-                        <div onClick={() => handleDelete(bagData.id)}>
+                        <div
+                          onClick={() => handleDelete(bagData.id)}
+                          className=" cursor-pointer hover:scale-110 duration-150"
+                        >
                           <DeleteLogo />
                         </div>
                       </div>
                     </div>
                     <div>
-                      <p className="text-[15px] leading-7">USD: ${bagData.price}</p>
+                      <p className="text-[15px] leading-7">
+                        USD: ${bagData.price}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -98,17 +136,23 @@ const Bag = () => {
           <p className="text-[21px] leading-[33px] font-inter">Summary</p>
           <div className="flex justify-between w-full mt-[25px]">
             <p className="text-[15px] leading-7 font-inter">Subtotal</p>
-            <p className="text-[15px] leading-7 font-inter">USD: $ {totalPrice}</p>
+            <p className="text-[15px] leading-7 font-inter">
+              USD: $ {totalPrice}
+            </p>
           </div>
           <div className="mt-[8px] flex justify-between w-full pb-[20px]">
-            <p className="text-[15px] leading-7 font-inter">Estimated Delivery & Handling</p>
+            <p className="text-[15px] leading-7 font-inter">
+              Estimated Delivery & Handling
+            </p>
             <p className="text-[15px] leading-7 font-inter">Free</p>
           </div>
           <hr />
 
           <div className="my-[20px] flex justify-between w-full">
             <p className="text-[14px] leading-7 font-inter">Total</p>
-            <p className="text-[14px] leading-7 font-medium font-inter">USD: $ {totalPrice}</p>
+            <p className="text-[14px] leading-7 font-medium font-inter">
+              USD: $ {totalPrice}
+            </p>
           </div>
           <hr />
 

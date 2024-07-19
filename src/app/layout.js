@@ -8,6 +8,8 @@ import SessionProvider from "./session-provider/SessionProvider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../pages/api/auth/[...nextauth]";
 import SignIn from "./signin/page";
+import SignUp from "./signup/SignUp";
+import AuthScreen from "./auth-screens/page";
 
 export const metadata = {
   title: "Shop Nike",
@@ -26,7 +28,9 @@ export default async function RootLayout({ children }) {
         <ShopProvider>
           <SessionProvider>
             {!session ? (
-              <SignIn />
+              <>
+              <AuthScreen/>
+              </>
             ) : (
               <>
                 <Header /> {children} <Footer />

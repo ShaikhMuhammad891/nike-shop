@@ -28,9 +28,10 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await signIn("credentials", {
-      redirect: false,
       email: formData.email,
       password: formData.password,
+      redirect: true,
+      callbackUrl: "/",
     });
     if (response?.error) {
       setError(response.error);
@@ -133,7 +134,7 @@ const Signin = () => {
         Not a Member?{" "}
         <span
           className=" text-black border-b border-b-black cursor-pointer"
-          onClick={() => router.push("/join")}
+          onClick={() => router.push("/signup")}
         >
           Join Us.
         </span>

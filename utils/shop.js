@@ -332,7 +332,7 @@ export const shop = [
     price: 16.5,
   },
   {
-    id: 1,
+    id: 29,
     img: "/images/left-one.png",
     brand: "Nike",
     material: "Exclusive",
@@ -343,7 +343,7 @@ export const shop = [
     price: 12.995,
   },
   {
-    id: 2,
+    id: 30,
     img: "/images/left-two.png",
     brand: "Nike",
     material: "Exclusive",
@@ -354,7 +354,7 @@ export const shop = [
     price: 14.995,
   },
   {
-    id: 3,
+    id: 31,
     img: "/images/left-one.png",
     brand: "Nike",
     material: "Exclusive",

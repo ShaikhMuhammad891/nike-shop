@@ -26,7 +26,11 @@ const Fav = () => {
   }, [fav, setFavCount]);
 
   const handleDelete = (id) => {
-    const newFav = fav.filter((item) => item.id !== id);
+    const newFav = JSON.parse(localStorage.getItem("fav"));
+    const index = newFav.findIndex((item) => item.id === id);
+    if (index !== -1) {
+      newFav.splice(index, 1);
+    }
     localStorage.setItem("fav", JSON.stringify(newFav));
     setFav(newFav);
   };
@@ -58,15 +62,19 @@ const Fav = () => {
                   <p className="text-[15px] leading-7 font-inter text-[#757575]">
                     Green {favData.color}
                   </p>
-                 <div className=" flex items-center gap-[49px]">
-                 <p className="text-[15px] leading-7 font-inter text-[#757575]">
-                    Size {favData.selectedSize}
-                  </p> <p className="text-[15px] leading-7 font-inter text-[#757575]">
-                    Quantity {favData.id}
-                  </p>
-                 </div>
+                  <div className=" flex items-center gap-[49px]">
+                    <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                      Size {favData.selectedSize}
+                    </p>{" "}
+                    <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                      Quantity {favData.id}
+                    </p>
+                  </div>
                   <div className="flex gap-[16px] mt-[28px]">
-                    <div onClick={() => handleDelete(favData.id)}>
+                    <div
+                      onClick={() => handleDelete(favData.id)}
+                      className=" cursor-pointer hover:scale-110 duration-150"
+                    >
                       <DeleteLogo />
                     </div>
                   </div>

@@ -87,6 +87,7 @@ const LandingSwiper = () => {
               prevEl: ".swiper-button-prev", // Selector for your custom "Previous" button
             }}
             modules={[Navigation]}
+            autoplay = {true}
             slidesPerView={3.1}
             spaceBetween={12}
             className=""

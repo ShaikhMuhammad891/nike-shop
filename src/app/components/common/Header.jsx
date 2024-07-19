@@ -2,7 +2,7 @@
 import { Cart, Heart, Line, NikeLogo, SearchIcon } from "@/icons/logos";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import { useShop } from "../../../../context/ContextData";
 import { signOut, useSession } from "next-auth/react";
 
@@ -11,8 +11,9 @@ const Header = () => {
   const pathname = usePathname();
   const { bagCount, favCount } = useShop();
   const session = useSession();
+
   return (
-    <div className={`${pathname === "/delivery" && "hidden"}`}>
+    <div className={`${pathname === "/delivery" && "hidden"} `}>
       <div className={`bg-[#F5F5F5] h-[36px] w-full flex items-center `}>
         <div className=" max-w-[1343px] w-full mx-auto flex justify-between items-center ">
           <Image
@@ -21,7 +22,7 @@ const Header = () => {
             width={24}
             height={24}
           />
-          <div>{session?.data?.user?.name}</div>
+          {/* <div>{session?.data?.user?.name}</div> */}
 
           <ul className=" flex gap-[15px] items-center">
             <li
@@ -80,7 +81,7 @@ const Header = () => {
         </button>
         <ul className=" flex gap-[24px] max-w-[760px] w-full absolute inset-0 mx-auto justify-center items-center">
           <Link href="/shop">
-            <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+            <li className=" text-[15px] hover:scale-105 duration-150 text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
               New & Featured
             </li>
           </Link>
@@ -90,7 +91,7 @@ const Header = () => {
               query: { category: "Men" },
             }}
           >
-            <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+            <li className=" text-[15px] hover:scale-105 duration-150 text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
               Men
             </li>
           </Link>
@@ -100,7 +101,7 @@ const Header = () => {
               query: { category: "Women" },
             }}
           >
-            <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+            <li className=" text-[15px] hover:scale-105 duration-150 text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
               Women
             </li>
           </Link>
@@ -110,14 +111,14 @@ const Header = () => {
               query: { category: "Kid" },
             }}
           >
-            <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer ">
+            <li className=" text-[15px] hover:scale-105 duration-150 text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer ">
               Kids
             </li>
           </Link>
-          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+          <li className=" text-[15px] hover:scale-105 duration-150 text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
             Sale
           </li>
-          <li className=" text-[15px] text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
+          <li className=" text-[15px] hover:scale-105 duration-150 text-[#111111] font-[500] leading-[24px] font-helvetica cursor-pointer">
             SNKRS
           </li>
         </ul>
