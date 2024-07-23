@@ -1,5 +1,5 @@
 "use client";
-import { ArrowBack } from "@/icons/logos";
+import { ArrowBack, LeftArrow, RightArrow } from "@/icons/logos";
 import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,19 +11,19 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper/modules";
-import { ShoeSwiper } from "../../../utils/SwiperContent";
 import { shop } from "../../../utils/shop";
 import { useRouter } from "next/navigation";
 
 const LandingSwiper = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isClickedNext, setIsClickedNext] = useState(false);
-  const [isClickedPrev, setIsClickedPrev] = useState(false);
+  const [isClicked, setIsClicked] = useState({
+    next: true,
+    prev: false,
+  });
   const router = useRouter();
 
   const SlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
-    console.log(activeIndex);
   };
 
   const swiperRef = useRef(null);
@@ -33,9 +33,7 @@ const LandingSwiper = () => {
       swiperRef.current.swiper.slideNext();
     }
     event.stopPropagation();
-
-    setIsClickedNext(true);
-    setIsClickedPrev(false);
+    setIsClicked({ ...isClicked, next: true, prev: false });
   };
 
   const goPrev = (event) => {
@@ -44,9 +42,7 @@ const LandingSwiper = () => {
       swiperRef.current.swiper.slidePrev();
     }
     event.stopPropagation();
-
-    setIsClickedPrev(true);
-    setIsClickedNext(false);
+    setIsClicked({ ...isClicked, next: false, prev: true });
   };
 
   const handleSubmit = (id) => {
@@ -65,15 +61,23 @@ const LandingSwiper = () => {
             </p>
             <button
               onClick={goPrev}
-              className=" bg-[#f5f5f5] w-[48px] h-[48px] rounded-full flex items-center justify-center"
+              className={`bg-[#f5f5f5] w-[48px] h-[48px] rounded-full flex items-center justify-center ${
+                isClicked.prev && "bg-[#E5E5E5]"
+              }`}
             >
-              <img src="/images/arrow-back.png" alt="" />
+              {isClicked.prev ? <LeftArrow stroke="black" /> : <LeftArrow />}
             </button>
             <button
               onClick={goNext}
-              className=" bg-[#f5f5f5] w-[48px] h-[48px] rounded-full flex items-center justify-center"
+              className={`bg-[#f5f5f5] w-[48px] h-[48px] rounded-full flex items-center justify-center ${
+                isClicked.next && "bg-[#E5E5E5]"
+              }`}
             >
-              <img src="/images/arrow-next.png" alt="" className=" " />
+              {isClicked.next ? (
+                <RightArrow />
+              ) : (
+                <RightArrow stroke="#CCCCCC" />
+              )}
             </button>
           </div>
         </div>
@@ -87,7 +91,7 @@ const LandingSwiper = () => {
               prevEl: ".swiper-button-prev", // Selector for your custom "Previous" button
             }}
             modules={[Navigation]}
-            autoplay = {true}
+            autoplay={true}
             slidesPerView={3.1}
             spaceBetween={12}
             className=""
@@ -95,7 +99,7 @@ const LandingSwiper = () => {
             {shop.map((data, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className=" mb-[30px] cursor-pointer "
+                  className=" mb-[30px] cursor-pointer hover:scale-105 duration-150"
                   onClick={() => handleSubmit(data.id)}
                 >
                   <img

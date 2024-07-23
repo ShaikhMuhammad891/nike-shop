@@ -11,10 +11,13 @@ import { shop } from "../../../utils/shop";
 import { useRouter } from "next/navigation";
 import Select from "react-select";
 import { Countries, customStyles } from "../../../utils/countries";
+import Button from "../components/common/Button";
 
 const Delivery = () => {
   const [value, setValue] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -49,8 +52,7 @@ const Delivery = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsClicked(!isClicked);
-    alert("Hurrah!");
-
+    setShowModal(true);
     setFormData({
       firstName: "",
       lastName: "",
@@ -361,6 +363,27 @@ const Delivery = () => {
           </div>
         </div>
       </div>
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed  inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
+          <div className="bg-white p-5 rounded-lg shadow-lg max-w-[400px] max-h-[350px] w-full h-full flex flex-col gap-[25px] items-center justify-center">
+            <p className=" font-inter font-medium text-[20px] text-center">
+              Your delivery information is stored, your package will arrive soon!
+            </p>
+            <Button
+              title="close"
+              bgcolor="black"
+              color="white"
+              onClick={() => {
+                setShowModal(false);
+              }}
+              className=""
+            >
+              Close
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

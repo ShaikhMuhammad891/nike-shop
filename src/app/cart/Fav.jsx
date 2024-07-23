@@ -1,5 +1,5 @@
 "use client";
-import { DeleteLogo } from "@/icons/logos";
+import { DeleteLogo, Heart } from "@/icons/logos";
 import React, { useEffect, useState } from "react";
 import { useShop } from "../../../context/ContextData";
 
@@ -72,11 +72,16 @@ const Fav = () => {
                   </div>
                   <div className="flex gap-[16px] mt-[28px]">
                     <div
+                      className=" cursor-pointer hover:scale-110 duration-150"
+                    >
+                      <Heart fill = "black" stroke = "white" />
+                    </div>
+                    <div
                       onClick={() => handleDelete(favData.id)}
                       className=" cursor-pointer hover:scale-110 duration-150"
                     >
                       <DeleteLogo />
-                    </div>
+                    </div>  
                   </div>
                 </div>
                 <div>

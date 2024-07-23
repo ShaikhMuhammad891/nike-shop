@@ -7,6 +7,11 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { ShoeSwiper } from "../../../utils/SwiperContent";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
+
 
 const OpenItem = (props) => {
   const { openData } = props;
@@ -43,7 +48,7 @@ const OpenItem = (props) => {
 
   const handleAdd = (value) => {
     if (selectedSize === null) {
-      alert("Please select a size before adding to bag or favorites.");
+      toast.error("Please Give a Size to Your Item")
       return;
     }
 
@@ -53,10 +58,12 @@ const OpenItem = (props) => {
       const bag = JSON.parse(localStorage.getItem("bag")) || [];
       const updatedBag = [...bag, itemWithSize];
       localStorage.setItem("bag", JSON.stringify(updatedBag));
+
     } else if (value === "fav") {
       const fav = JSON.parse(localStorage.getItem("fav")) || [];
       const updatedFav = [...fav, itemWithSize];
       localStorage.setItem("fav", JSON.stringify(updatedFav));
+
     }
 
     router.push("/cart");
@@ -232,6 +239,8 @@ const OpenItem = (props) => {
             ))}
           </Swiper>
         </div>
+        <ToastContainer />
+
       </div>
     </>
   );

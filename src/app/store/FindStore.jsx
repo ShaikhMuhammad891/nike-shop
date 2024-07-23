@@ -43,7 +43,8 @@ const FindStore = () => {
     setSelectedStore(null); // Reset selected store when searching
   };
 
-  const getMapCenter = () => {
+  const 
+  getMapCenter = () => {
     if (selectedStore) {
       return { lat: selectedStore.latitude, lng: selectedStore.longitude };
     } else if (places.length > 0) {
@@ -119,7 +120,7 @@ const FindStore = () => {
             </p>
           </div>
 
-          {/* Fixed Map Section */}
+          {/*Map Section */}
           <div className="">
             <LoadScript googleMapsApiKey= "">
               <GoogleMap

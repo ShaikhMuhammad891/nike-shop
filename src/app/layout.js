@@ -7,8 +7,6 @@ import { ShopProvider } from "../../context/ContextData";
 import SessionProvider from "./session-provider/SessionProvider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../pages/api/auth/[...nextauth]";
-import SignIn from "./signin/page";
-import SignUp from "./signup/SignUp";
 import AuthScreen from "./auth-screens/page";
 
 export const metadata = {
@@ -20,6 +18,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <body
@@ -28,9 +27,7 @@ export default async function RootLayout({ children }) {
         <ShopProvider>
           <SessionProvider>
             {!session ? (
-              <>
-              <AuthScreen/>
-              </>
+              <AuthScreen />
             ) : (
               <>
                 <Header /> {children} <Footer />

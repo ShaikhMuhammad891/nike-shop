@@ -10,7 +10,16 @@ const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { bagCount, favCount } = useShop();
-  const session = useSession();
+  const session = useSession({
+    required: true,
+    onUnauthenticated(){
+      redirect(router, "/login")
+    }
+  });
+
+  const signout = async () => {
+    await signOut({ callbackUrl: "/login" });
+  };
 
   return (
     <div className={`${pathname === "/delivery" && "hidden"} `}>
@@ -22,7 +31,7 @@ const Header = () => {
             width={24}
             height={24}
           />
-          {/* <div>{session?.data?.user?.name}</div> */}
+          <div>{session?.data?.user?.name}</div>
 
           <ul className=" flex gap-[15px] items-center">
             <li
@@ -66,7 +75,7 @@ const Header = () => {
               </>
             )}
             <li
-              onClick={() => signOut()}
+              onClick={signout}
               className=" text-[11px] font-[500] leading-[14px] cursor-pointer "
             >
               Sign Out

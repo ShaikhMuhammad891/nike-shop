@@ -10,12 +10,11 @@ const AuthScreen = () => {
   return (
     <>
       <div>
-        <Header />
-        {pathname === "/signin" ? (
-          <SignIn />
+        {pathname === "/signup" ? (
+          <SignUp />
         ) : (
           <>
-            <SignUp />
+            <SignIn />
           </>
         )}
       </div>

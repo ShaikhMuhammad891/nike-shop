@@ -9,6 +9,7 @@ export const ShopProvider = ({ children }) => {
   const [selectedItem, setSelectedItem] = useState([]);
   const [bagCount, setBagCount] = useState(null);
   const [favCount, setFavCount] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const bagCountFromStorage = localStorage.getItem("bagCount");
@@ -43,6 +44,8 @@ export const ShopProvider = ({ children }) => {
         setBagCount,
         favCount,
         setFavCount,
+        user,
+        setUser,
       }}
     >
       {children}

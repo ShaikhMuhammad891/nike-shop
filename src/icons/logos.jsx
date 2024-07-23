@@ -362,3 +362,32 @@ export const PinLocation = (props) => (
     />
   </svg>
 );
+
+export const LeftArrow = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={10}
+    height={16}
+    fill="none"
+    {...props}
+  >
+    <path
+      stroke="#CCC"
+      strokeWidth={1.5}
+      d="M8.509 14.966 1.542 8l6.967-6.967"
+      {...props}
+    />
+  </svg>
+);
+
+export const RightArrow = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={9}
+    height={16}
+    fill="none"
+    {...props}
+  >
+    <path stroke="#111" strokeWidth={1.5} d="M.833 14.966 7.799 8 .833 1.033" {...props} />
+  </svg>
+);

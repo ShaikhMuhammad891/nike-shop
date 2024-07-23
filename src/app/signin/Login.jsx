@@ -27,18 +27,13 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const response = await signIn("credentials", {
       email: formData.email,
       password: formData.password,
       redirect: true,
       callbackUrl: "/",
     });
-    if (response?.error) {
-      setError(response.error);
-      console.log(response.error);
-    } else {
-      router.push("/"); // Redirect to home page or any other page after successful sign in
-    }
   };
 
   const handleGoogleSignIn = async () => {

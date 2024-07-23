@@ -22,6 +22,12 @@ const ShopContent = ({ category }) => {
 
   const router = useRouter();
 
+  const sortOnClick = (title) => {
+    setSortOption(title);
+    window.scrollTo(0, 0)
+
+  };
+
   // Handle checked
   const handleChecked = (value, type) => {
     setChecked((prev) => {
@@ -70,7 +76,7 @@ const ShopContent = ({ category }) => {
       categoryFiltered = categoryFiltered.sort((a, b) => b.price - a.price);
     } else if (sortOption === "low-to-high") {
       categoryFiltered = categoryFiltered.sort((a, b) => a.price - b.price);
-    }
+    } 
 
     setCategoryFilter(categoryFiltered);
   }, [category, checked, priceFilter, sortOption, isDropdown]);
@@ -130,7 +136,7 @@ const ShopContent = ({ category }) => {
               <FilterChange />
             </div>
           </div>
-          <div className="flex items-center gap-[7.8px]">
+          {/* <div className="flex items-center gap-[7.8px]">
             <p className="font-helvetica text-[16px] leading-[28px]">Sort By</p>
             <div className="" onClick={() => handleDropdown("sort")}>
               {isDropdown.sort ? (
@@ -141,12 +147,12 @@ const ShopContent = ({ category }) => {
                 <ArrowDrop />
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* sort */}
-      {isDropdown.sort && (
+      {/* {isDropdown.sort && (
         <ul className=" absolute right-11 bg-white py-2 px-4 space-y-3 translate-y-4 transition-all duration-300">
           <li
             className={`font-inter font-medium text-[16px] leading-7 cursor-pointer hover:scale-105 duration-300 ${
@@ -171,7 +177,7 @@ const ShopContent = ({ category }) => {
             Low-To-High
           </li>
         </ul>
-      )}
+      )} */}
 
       <div className="mt-[30px] flex gap-[48px] max-w-[1344px] mx-auto   ">
         <div
@@ -379,6 +385,7 @@ const ShopContent = ({ category }) => {
                 borderColor="#CCCCCC"
                 bgcolor="transparent"
                 color="#111111"
+                onClick={() => sortOnClick("Best Selling Products")}
               />
               <Button
                 title="Best Shoes"

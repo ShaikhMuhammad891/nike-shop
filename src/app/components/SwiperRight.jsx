@@ -9,11 +9,17 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 import { LeftSwiper, RightSwiper } from "../../../utils/SwiperContent";
+import { shop } from "../../../utils/shop";
+import { useRouter } from "next/navigation";
+import { LeftArrow, RightArrow } from "@/icons/logos";
 
 const SwiperRight = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isClickedNext, setIsClickedNext] = useState(false);
-  const [isClickedPrev, setIsClickedPrev] = useState(false);
+  const [isClicked, setIsClicked] = useState({
+    next: true,
+    prev: false,
+  });
+  const router = useRouter();
 
   const SlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
@@ -27,9 +33,7 @@ const SwiperRight = () => {
       swiperRef.current.swiper.slideNext();
     }
     event.stopPropagation();
-
-    setIsClickedNext(true);
-    setIsClickedPrev(false);
+    setIsClicked({ ...isClicked, next: true, prev: false });
   };
 
   const goPrev = (event) => {
@@ -38,9 +42,7 @@ const SwiperRight = () => {
       swiperRef.current.swiper.slidePrev();
     }
     event.stopPropagation();
-
-    setIsClickedPrev(true);
-    setIsClickedNext(false);
+    setIsClicked({ ...isClicked, next: false, prev: true });
   };
   return (
     <>
@@ -53,15 +55,23 @@ const SwiperRight = () => {
             </p>
             <button
               onClick={goPrev}
-              className=" bg-[#f5f5f5] w-[48px] h-[48px] rounded-full flex items-center justify-center"
+              className={`bg-[#f5f5f5] w-[48px] h-[48px] rounded-full flex items-center justify-center ${
+                isClicked.prev && "bg-[#e5e5e5]"
+              }`}
             >
-              <img src="/images/arrow-back.png" alt="" />
+              {isClicked.prev ? <LeftArrow stroke="black" /> : <LeftArrow />}
             </button>
             <button
               onClick={goNext}
-              className=" bg-[#f5f5f5] w-[48px] h-[48px] rounded-full flex items-center justify-center"
+              className={`bg-[#f5f5f5] w-[48px] h-[48px] rounded-full flex items-center justify-center ${
+                isClicked.next && "bg-[#e5e5e5]"
+              }`}
             >
-              <img src="/images/arrow-next.png" alt="" className=" " />
+              {isClicked.next ? (
+                <RightArrow />
+              ) : (
+                <RightArrow stroke="#CCCCCC" />
+              )}
             </button>
           </div>
         </div>
@@ -77,28 +87,34 @@ const SwiperRight = () => {
             modules={[Navigation]}
             slidesPerView={2}
             spaceBetween={12}
+            loop={true}
             className=" mt-[12px] mb-[53px]"
           >
-            {RightSwiper.map((data, index) => (
-              <SwiperSlide key={index}>
-                <div>
-                  <img src={data.img} alt="" />
-                  <div className=" max-w-[284px]">
-                    <div className="mt-[21px] flex justify-between">
-                      <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px]">
-                        {data.title}
-                      </p>
-                      <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px] mr-2">
-                        ${data.price}
+            {shop
+              .filter((item) => item.gender === "Women")
+              .map((data, index) => (
+                <SwiperSlide
+                  key={index}
+                  onClick={() => router.push(`/selectedItem/${data.id}`)}
+                >
+                  <div className=" cursor-pointer hover:scale-105 duration-150">
+                    <img src={data.img} alt="" />
+                    <div className=" max-w-[284px]">
+                      <div className="mt-[21px] flex justify-between">
+                        <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px]">
+                          {data.title}
+                        </p>
+                        <p className=" text-[15px] text-[#111111] font-medium font-helvetica leading-[24px] mr-2">
+                          ${data.price}
+                        </p>
+                      </div>
+                      <p className=" font-helvetica text-[15px] text-[#757575] leading-[24px] max-w-[199.78px]">
+                        {data.gender}
                       </p>
                     </div>
-                    <p className=" font-helvetica text-[15px] text-[#757575] leading-[24px] max-w-[199.78px]">
-                      {data.gender}
-                    </p>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>
