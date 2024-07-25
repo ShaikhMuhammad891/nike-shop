@@ -15,7 +15,7 @@ export const shop = [
     price: 18.99,
     description:
       "Layer on style with the Air Max 97. The cracked leather and soft suede update the iconic design while the original look (inspired by Japanese bullet trains and water droplets) still takes centre stage. Easy-to-style colours let you hit the streets quickly.",
-    best: "Best Selling Products"
+    best: "Best Selling Products",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const shop = [
     gender: "Men",
     color: 2,
     price: 30.0,
-    best: "New Jordan Shoes"
+    best: "New Jordan Shoes",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ export const shop = [
     gender: "Men",
     color: 1,
     price: 25.0,
-    best: "Best Shoes"
+    best: "Best Shoes",
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ export const shop = [
     gender: "Women",
     color: 2,
     price: 60.0,
-    best: "Best Women's Shoes"
+    best: "Best Women's Shoes",
   },
   {
     id: 5,
@@ -63,7 +63,7 @@ export const shop = [
     gender: "Men",
     color: 7,
     price: 17.5,
-    best: "New Basketball Shoes"
+    best: "New Basketball Shoes",
   },
   {
     id: 6,
@@ -76,7 +76,7 @@ export const shop = [
     kid: "girl",
     color: 2,
     price: 27.0,
-    best: "Best Training & Gym"
+    best: "Best Training & Gym",
   },
   {
     id: 7,
@@ -88,7 +88,7 @@ export const shop = [
     gender: "Men",
     color: 5,
     price: 22.0,
-    best: "New Football Shoes"
+    best: "New Football Shoes",
   },
   {
     id: 8,
@@ -100,7 +100,7 @@ export const shop = [
     gender: "Men",
     color: 5,
     price: 29.0,
-    best: "Best Men's Shoes"
+    best: "Best Men's Shoes",
   },
   {
     id: 9,
@@ -113,7 +113,7 @@ export const shop = [
     kid: "boy",
     color: 3,
     price: 28.0,
-    best: "Best Selling Products"
+    best: "Best Selling Products",
   },
   {
     id: 10,
@@ -126,7 +126,7 @@ export const shop = [
     kid: "boy",
     color: 3,
     price: 20.25,
-    best: "New Jordan Shoes"
+    best: "New Jordan Shoes",
   },
   {
     id: 11,
@@ -138,7 +138,7 @@ export const shop = [
     gender: "Kid",
     color: 1,
     price: 15.0,
-    best: "Best Shoes"
+    best: "Best Shoes",
   },
   {
     id: 12,
@@ -151,7 +151,7 @@ export const shop = [
     kid: "boy",
     color: 4,
     price: 32.0,
-    best: "Best Women's Shoes"
+    best: "Best Women's Shoes",
   },
   {
     id: 13,
@@ -164,7 +164,7 @@ export const shop = [
     kid: "girl",
     color: 6,
     price: 18.99,
-    best: "New Basketball Shoes"
+    best: "New Basketball Shoes",
   },
   {
     id: 14,
@@ -176,7 +176,7 @@ export const shop = [
     gender: "Kid",
     color: 4,
     price: 17.0,
-    best: "Best Training & Gym"
+    best: "Best Training & Gym",
   },
   {
     id: 15,
@@ -189,7 +189,7 @@ export const shop = [
     kid: "boy",
     color: 2,
     price: 15.75,
-    best: "New Football Shoes"
+    best: "New Football Shoes",
   },
   {
     id: 16,
@@ -201,7 +201,7 @@ export const shop = [
     gender: "Men",
     color: 1,
     price: 10.5,
-    best: "Best Men's Shoes"
+    best: "Best Men's Shoes",
   },
   {
     id: 17,
@@ -213,7 +213,7 @@ export const shop = [
     gender: "Kid",
     color: 2,
     price: 20.0,
-    best: "Best Selling Products"
+    best: "Best Selling Products",
   },
   {
     id: 18,
@@ -226,7 +226,7 @@ export const shop = [
     kid: "girl",
     color: 1,
     price: 25.0,
-    best: "New Jordan Shoes"
+    best: "New Jordan Shoes",
   },
   {
     id: 19,
@@ -238,7 +238,7 @@ export const shop = [
     gender: "Men",
     color: 6,
     price: 19.5,
-    best: "Best Shoes"
+    best: "Best Shoes",
   },
   {
     id: 20,
@@ -251,7 +251,7 @@ export const shop = [
     kid: "girl",
     color: 3,
     price: 18.0,
-    best: "Best Women's Shoes"
+    best: "Best Women's Shoes",
   },
   {
     id: 21,
@@ -264,7 +264,7 @@ export const shop = [
     kid: "boy",
     color: 4,
     price: 17.5,
-    best: "New Basketball Shoes"
+    best: "New Basketball Shoes",
   },
   {
     id: 22,
@@ -276,7 +276,7 @@ export const shop = [
     gender: "Women",
     color: 4,
     price: 16.5,
-    best: "Best Training & Gym"
+    best: "Best Training & Gym",
   },
   {
     id: 23,
@@ -288,7 +288,7 @@ export const shop = [
     gender: "Women",
     color: 3,
     price: 65.0,
-    best: "Best Selling Products"
+    best: "Best Selling Products",
   },
   {
     id: 24,
@@ -300,7 +300,7 @@ export const shop = [
     gender: "Women",
     color: 2,
     price: 19.5,
-    best: "Best Men's Shoes"
+    best: "Best Men's Shoes",
   },
   {
     id: 25,
@@ -312,7 +312,7 @@ export const shop = [
     gender: "Women",
     color: 1,
     price: 55.0,
-    best: "Best Selling Products"
+    best: "Best Selling Products",
   },
   {
     id: 26,
@@ -324,7 +324,7 @@ export const shop = [
     gender: "Women",
     color: 5,
     price: 19.5,
-    best: "New Jordan Shoes"
+    best: "New Jordan Shoes",
   },
   {
     id: 27,
@@ -336,7 +336,7 @@ export const shop = [
     gender: "Women",
     color: 1,
     price: 22.0,
-    best: "Best Shoes"
+    best: "Best Shoes",
   },
   {
     id: 28,
@@ -348,7 +348,7 @@ export const shop = [
     gender: "Women",
     color: 7,
     price: 16.5,
-    best: "Best Women's Shoes"
+    best: "Best Women's Shoes",
   },
   {
     id: 29,
@@ -360,7 +360,7 @@ export const shop = [
     gender: "Men",
     color: 1,
     price: 12.995,
-    best: "New Basketball Shoes"
+    best: "New Basketball Shoes",
   },
   {
     id: 30,
@@ -372,7 +372,7 @@ export const shop = [
     gender: "Men",
     color: 2,
     price: 14.995,
-    best: "Best Training & Gym"
+    best: "Best Training & Gym",
   },
   {
     id: 31,
@@ -384,10 +384,9 @@ export const shop = [
     gender: "Nike Dri-FIT ADV TechKnit Ultra",
     color: 3,
     price: 12.995,
-    best: "Best Men's Shoes"
-  }
+    best: "Best Men's Shoes",
+  },
 ];
-
 
 export const clothingItems = [
   "Shoes",
@@ -417,5 +416,12 @@ export const ShoeSize = [
   { size: "UK 7" },
   { size: "UK 8.5" },
   { size: "UK 10" },
-  { size: "UK 11.5" },
+];
+
+export const Colors = [
+  { color: "Black" },
+  { color: "Blue" },
+  { color: "Red" },
+  { color: "White" },
+  { color: "Green" },
 ];

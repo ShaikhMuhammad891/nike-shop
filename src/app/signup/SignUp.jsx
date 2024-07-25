@@ -4,9 +4,7 @@ import { useRouter } from "next/navigation";
 import Select from "react-select";
 import { NikeLogo } from "@/icons/logos";
 import { Countries, customStyles } from "../../../utils/countries";
-import { auth } from "@/app/firebase/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signIn } from "next-auth/react";
+import { auth } from "../firebase/firebase";
 
 const SignUp = () => {
   const router = useRouter();
@@ -61,30 +59,6 @@ const SignUp = () => {
 
   const signup = async (e) => {
     e.preventDefault();
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        formFields.email,
-        formFields.password
-      );
-      if (userCredential.user) {
-        // Sign in the user to establish a session
-        const result = await signIn("credentials", {
-          email: formFields.email,
-          password: formFields.password,
-          redirect: false, // Prevent automatic redirection
-        });
-
-        if (result?.ok) {
-          // Redirect to main page after successful sign-up
-          router.push("/");
-        } else {
-          setError("Failed to sign in after sign-up");
-        }
-      }
-    } catch (error) {
-      setError(error.message);
-    }
   };
 
   return (

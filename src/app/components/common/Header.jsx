@@ -4,18 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect, usePathname, useRouter } from "next/navigation";
 import { useShop } from "../../../../context/ContextData";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { bagCount, favCount } = useShop();
-  const session = useSession({
-    required: true,
-    onUnauthenticated(){
-      redirect(router, "/login")
-    }
-  });
 
   const signout = async () => {
     await signOut({ callbackUrl: "/login" });
@@ -31,7 +25,6 @@ const Header = () => {
             width={24}
             height={24}
           />
-          <div>{session?.data?.user?.name}</div>
 
           <ul className=" flex gap-[15px] items-center">
             <li
@@ -61,24 +54,12 @@ const Header = () => {
             <li>
               <Line />
             </li>
-            {!session && (
-              <>
-                <li
-                  onClick={() => router.push("/signin")}
-                  className=" text-[11px] font-[500] leading-[14px] cursor-pointer "
-                >
-                  Sign In
-                </li>
-                <li>
-                  <Line />
-                </li>
-              </>
-            )}
+
             <li
-              onClick={signout}
+              onClick={() => router.push("/signin")}
               className=" text-[11px] font-[500] leading-[14px] cursor-pointer "
             >
-              Sign Out
+              Sign In
             </li>
           </ul>
         </div>

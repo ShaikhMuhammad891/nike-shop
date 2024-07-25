@@ -10,15 +10,19 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-
-
+import { useShop } from "../../../context/ContextData";
 
 const OpenItem = (props) => {
   const { openData } = props;
-  const [selectedSize, setSelectedSize] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedSizeAndColor, setSelectedSizeAndColor] = useState({
+    selectedSize: "",
+    selectedColor: "",
+  });
   const [isClicked, setIsClicked] = useState("");
-  const [data, setData] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const { setBagCount, setFavCount } = useShop();
+  const refBag = useRef(null);
+  const refFav = useRef(null);
   const router = useRouter();
 
   const SlideChange = (swiper) => {
@@ -42,39 +46,70 @@ const OpenItem = (props) => {
     event.stopPropagation();
   };
 
-  const handleSizeClick = (size) => {
-    setSelectedSize(size);
+  const howMany = (value) => {
+    if (value === "increase") {
+      setQuantity(quantity + 1);
+    } else if (value === "decrease") {
+      if (quantity > 1) {
+        setQuantity(quantity - 1);
+      } else {
+        setQuantity(1);
+      }
+    }
   };
 
-  const handleAdd = (value) => {
-    if (selectedSize === null) {
-      toast.error("Please Give a Size to Your Item")
+  const handleSizeAndColor = (value, type) => {
+    refBag.current.style.backgroundColor = "black";
+    refBag.current.style.color = "white";
+    refFav.current.style.backgroundColor = "white";
+    refFav.current.style.color = "black";
+
+    setSelectedSizeAndColor((prevState) => ({ 
+      ...prevState,
+      [type]: value,
+    }));
+  };
+
+  const handleAdd = async (value) => {
+    if (!selectedSizeAndColor.selectedColor) {
+      toast.error("Please select a color for your item");
       return;
     }
 
-    const itemWithSize = { ...openData, selectedSize };
+    if (!selectedSizeAndColor.selectedSize) {
+      toast.error("Please select a size for your item");
+      return;
+    }
+
+    const itemWithSizeAndQuantity = {
+      ...openData,
+      quantity,
+      size: selectedSizeAndColor.selectedSize,
+      color: selectedSizeAndColor.selectedColor,
+    };
 
     if (value === "bag") {
       const bag = JSON.parse(localStorage.getItem("bag")) || [];
-      const updatedBag = [...bag, itemWithSize];
+      const updatedBag = [...bag, itemWithSizeAndQuantity];
       localStorage.setItem("bag", JSON.stringify(updatedBag));
-
+      setBagCount(updatedBag.length);
+      toast.success("Item added to bag");
     } else if (value === "fav") {
       const fav = JSON.parse(localStorage.getItem("fav")) || [];
-      const updatedFav = [...fav, itemWithSize];
+      const updatedFav = [...fav, itemWithSizeAndQuantity];
       localStorage.setItem("fav", JSON.stringify(updatedFav));
-
+      setFavCount(updatedFav.length);
+      toast.success("Item added to favorites");
     }
 
-    router.push("/cart");
+    setTimeout(() => {
+      router.push("/shop");
+    }, 3000);
   };
 
   return (
     <>
       <div className="mt-[104px] ">
-        {data.map((el, i) => (
-          <p key={i}>{el.title}</p>
-        ))}
         <div className="flex gap-[72px] max-w-[1299px] mx-auto ">
           <div className="flex flex-wrap max-w-[851px] w-full gap-[12px]">
             <img src={openData.img} alt="" className=" h-[400px] w-[419.5px]" />
@@ -88,7 +123,7 @@ const OpenItem = (props) => {
               {openData?.genderWear}
             </p>
             <p className="text-[15px] font-inter font-medium leading-[24px] mt-[1.5px]">
-              MRP : $ {openData?.price}
+              MRP : $ {openData?.price * quantity}
             </p>
             <p className="text-[15px] font-inter font-medium leading-[24px] text-[#757575] mt-[2px]">
               incl. of taxes
@@ -96,6 +131,46 @@ const OpenItem = (props) => {
             <p className="text-[15px] font-inter font-medium leading-[24px] text-[#757575] mt-[2px] mb-[40px]">
               (Also includes all applicable duties)
             </p>
+
+            {/* quantity */}
+            <div className=" flex gap-2 items-center">
+              <button
+                onClick={() => howMany("decrease")}
+                className=" border px-2 rounded-[4px] border-[#757575] text-[25px] font-medium text-[#757575]"
+              >
+                -
+              </button>
+              <p className=" text-[20px] font-medium text-[#757575]">
+                {quantity}
+              </p>
+              <button
+                onClick={() => howMany("increase")}
+                className=" border px-2 rounded-[4px] border-[#757575] text-[25px] font-medium text-[#757575]"
+              >
+                +
+              </button>
+            </div>
+
+            {/* colors */}
+            <div className="mt-[30px] flex flex-wrap gap-[7px]">
+              {/* Mapping through shoe sizes */}
+              {openData?.itemColor?.map((item, index) => (
+                <div key={index}>
+                  <button
+                    className={`border w-[120.66px] font-inter h-[48px] rounded-[4px] ${
+                      selectedSizeAndColor.selectedColor === item.color
+                        ? "border-[#111111]"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleSizeAndColor(item.color, "selectedColor")
+                    }
+                  >
+                    {item.color}
+                  </button>
+                </div>
+              ))}
+            </div>
 
             {/* Sizes */}
             <div>
@@ -113,9 +188,13 @@ const OpenItem = (props) => {
                   <div key={index}>
                     <button
                       className={`border w-[120.66px] font-inter h-[48px] rounded-[4px] ${
-                        selectedSize === shoe.size ? "border-[#111111]" : ""
+                        selectedSizeAndColor.selectedSize === shoe.size
+                          ? "border-[#111111]"
+                          : ""
                       }`}
-                      onClick={() => handleSizeClick(shoe.size)}
+                      onClick={() =>
+                        handleSizeAndColor(shoe.size, "selectedSize")
+                      }
                     >
                       {shoe.size}
                     </button>
@@ -125,24 +204,25 @@ const OpenItem = (props) => {
 
               <div>
                 <button
+                  ref={refBag}
                   onClick={() => {
                     setIsClicked("bag");
                     handleAdd("bag");
                   }}
-                  className={`text-[#111111] border font-inter border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
-                    isClicked === "bag" ? "bg-black text-white" : ""
-                  }`}
+                  className={`text-[#111111] border font-inter border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px]`}
                 >
                   Add to Bag
                 </button>
                 <button
+                  ref={refFav}
                   onClick={() => {
-                    setIsClicked("fav");
                     handleAdd("fav");
+                    refFav.current.style.backgroundColor = "black";
+                    refFav.current.style.color = "white";
+                    refBag.current.style.backgroundColor = "white";
+                    refBag.current.style.color = "black";
                   }}
-                  className={`text-[#111111] border font-inter border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px] ${
-                    isClicked === "fav" && " bg-black text-white"
-                  } `}
+                  className={`text-[#111111] border font-inter border-[#CCCCCC] text-center mt-[12px] w-full rounded-[30px] py-[19px]`}
                 >
                   Add to Favourites
                 </button>
@@ -240,7 +320,6 @@ const OpenItem = (props) => {
           </Swiper>
         </div>
         <ToastContainer />
-
       </div>
     </>
   );

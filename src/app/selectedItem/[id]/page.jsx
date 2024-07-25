@@ -1,12 +1,12 @@
 import React from "react";
 import OpenItem from "../OpenItem";
-import { ShoeSize, shop } from "../../../../utils/shop";
+import { Colors, ShoeSize, shop } from "../../../../utils/shop";
 
 const SelectedItems = ({ params }) => {
   const openData = shop.find((data) => data.id == params.id);
   // add ShoeSize with openData as an object
   openData.sizes = ShoeSize;
-  console.log(openData);
+  openData.itemColor = Colors;
 
   return (
     <div className=" ">

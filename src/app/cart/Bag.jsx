@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useShop } from "../../../context/ContextData";
 
 const Bag = () => {
-  const [isClicked, setIsClicked] = useState(false);
   const [bag, setBag] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const { bagCount, setBagCount } = useShop();
@@ -15,7 +14,10 @@ const Bag = () => {
   }, []);
 
   useEffect(() => {
-    const total = bag.reduce((total, item) => total + item.price, 0);
+    const total = bag.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
     setTotalPrice(total.toFixed(2));
   }, [bag]);
 
@@ -52,6 +54,7 @@ const Bag = () => {
     const event = new CustomEvent("updateFav", { detail: newFav });
     window.dispatchEvent(event);
   };
+  console.log(bag, "at bag");
 
   return (
     <div className="max-w-[1100px] mx-auto my-[40px]">
@@ -76,60 +79,62 @@ const Bag = () => {
               Bag
             </p>
 
-            {bag.length === 0 ? (
-              <p className="font-inter text-[15px] leading-6">
-                There are no items saved to your Bag
-              </p>
-            ) : (
-              bag.map((bagData, index) => (
-                <div key={index} className="flex w-full gap-[30px] mt-[25px]">
-                  <div className="max-w-[150px]">
-                    <img src={bagData.img} alt="" />
-                  </div>
-                  <div className="max-w-[537px] flex justify-between w-full">
-                    <div>
-                      <p className="text-[15px] leading-7 font-inter font-medium">
-                        {bagData.title}
-                      </p>
-                      <p className="text-[15px] leading-7 font-inter text-[#757575]">
-                        {bagData.genderWear}
-                      </p>
-                      <p className="text-[15px] leading-7 font-inter text-[#757575]">
-                        Green {bagData.color}
-                      </p>
-                      <div className=" flex items-center gap-[49px]">
-                        <p className="text-[15px] leading-7 font-inter text-[#757575]">
-                          Size {bagData.selectedSize}
+            <div className=" flex flex-col-reverse">
+              {bag.length === 0 ? (
+                <p className="font-inter text-[15px] leading-6">
+                  There are no items saved to your Bag
+                </p>
+              ) : (
+                bag.map((bagData, index) => (
+                  <div key={index} className="flex w-full gap-[30px] mt-[25px]">
+                    <div className="max-w-[150px]">
+                      <img src={bagData.img} alt="" />
+                    </div>
+                    <div className="max-w-[537px] flex justify-between w-full">
+                      <div>
+                        <p className="text-[15px] leading-7 font-inter font-medium">
+                          {bagData.title}
                         </p>
                         <p className="text-[15px] leading-7 font-inter text-[#757575]">
-                          Quantity {bagData.id}
+                          {bagData.genderWear}
                         </p>
-                      </div>
+                        <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                          Colour {bagData.color}
+                        </p>
+                        <div className=" flex items-center gap-[49px]">
+                          <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                            Size {bagData.size}
+                          </p>
+                          <p className="text-[15px] leading-7 font-inter text-[#757575]">
+                            Quantity {bagData.quantity}
+                          </p>
+                        </div>
 
-                      <div className="flex gap-[16px] mt-[28px]">
-                        <div
-                          onClick={() => addToFav(bagData.id)}
-                          className=" cursor-pointer hover:scale-110 duration-150"
-                        >
-                          <Heart />
-                        </div>
-                        <div
-                          onClick={() => handleDelete(bagData.id)}
-                          className=" cursor-pointer hover:scale-110 duration-150"
-                        >
-                          <DeleteLogo />
+                        <div className="flex gap-[16px] mt-[28px]">
+                          <div
+                            onClick={() => addToFav(bagData.id)}
+                            className=" cursor-pointer hover:scale-110 duration-150"
+                          >
+                            <Heart />
+                          </div>
+                          <div
+                            onClick={() => handleDelete(bagData.id)}
+                            className=" cursor-pointer hover:scale-110 duration-150"
+                          >
+                            <DeleteLogo />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div>
-                      <p className="text-[15px] leading-7">
-                        USD: ${bagData.price}
-                      </p>
+                      <div>
+                        <p className="text-[15px] leading-7">
+                          USD: ${bagData.price * bagData.quantity}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            )}
+                ))
+              )}
+            </div>
           </div>
         </div>
         <div className="max-w-[350.67px] w-full">
@@ -157,10 +162,7 @@ const Bag = () => {
           <hr />
 
           <button
-            onClick={() => setIsClicked(!isClicked)}
-            className={`mt-[32px] w-full rounded-[30px] border py-[18px] font-inter ${
-              isClicked && "bg-black text-white"
-            }`}
+            className={`mt-[32px] w-full rounded-[30px] border py-[18px] font-inter bg-black text-white`}
           >
             Member Checkout
           </button>

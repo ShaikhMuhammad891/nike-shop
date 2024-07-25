@@ -1,8 +1,7 @@
 "use client";
 import { NikeLogo } from "@/icons/logos";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const Signin = () => {
   const router = useRouter();
@@ -16,8 +15,16 @@ const Signin = () => {
     keepSignedIn: false,
   });
   const [error, setError] = useState(null);
+  const signinRef = useRef(null);
+  const googleRef = useRef(null);
 
   const handleChange = (e) => {
+    signinRef.current.style.backgroundColor = "black";
+    signinRef.current.style.color = "white"
+    googleRef.current.style.backgroundColor = "#E5E5E5";
+    googleRef.current.style.color = "#757575";
+
+
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
@@ -27,23 +34,6 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await signIn("credentials", {
-      email: formData.email,
-      password: formData.password,
-      redirect: true,
-      callbackUrl: "/",
-    });
-  };
-
-  const handleGoogleSignIn = async () => {
-    const response = await signIn("google", { redirect: false });
-    if (response?.error) {
-      setError(response.error);
-      console.log(response.error);
-    } else {
-      router.push("/"); // Redirect to home page or any other page after successful Google sign in
-    }
   };
 
   const changeColor = (value) => {
@@ -104,23 +94,18 @@ const Signin = () => {
         <span className=" border-b border-b-[#8D8D8D]">Terms of Use</span>.
       </p>
       <button
+        ref={signinRef}
         onClick={() => changeColor("signin")}
         type="submit"
-        className={`${
-          isClicked.signin ? " bg-black text-white" : ""
-        } mt-[30px] w-full bg-[#E5E5E5] text-[#757575] text-[11px] leading-[17px] flex items-center justify-center py-[11px] rounded-[3px]`}
+        className={` mt-[30px] w-full bg-[#E5E5E5] text-[#757575] text-[11px] leading-[17px] flex items-center justify-center py-[11px] rounded-[3px]`}
       >
         SIGN IN
       </button>
       <button
+      ref={googleRef}
         type="button"
-        onClick={() => {
-          changeColor("google");
-          handleGoogleSignIn();
-        }}
-        className={`${
-          isClicked.google ? " bg-black text-white" : ""
-        } mt-[30px] w-full bg-[#E5E5E5] text-[#757575] text-[11px] leading-[17px] flex items-center justify-center py-[11px] rounded-[3px]`}
+     
+        className={` tracking-wide mt-[30px] w-full bg-black text-white text-[11px] leading-[17px] flex items-center justify-center py-[11px] rounded-[3px]`}
       >
         SIGN IN WITH GOOGLE
       </button>

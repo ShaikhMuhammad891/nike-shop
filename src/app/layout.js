@@ -4,10 +4,7 @@ import { helvetica } from "../../utils/fonts";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import { ShopProvider } from "../../context/ContextData";
-import SessionProvider from "./session-provider/SessionProvider";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../pages/api/auth/[...nextauth]";
-import AuthScreen from "./auth-screens/page";
+
 
 export const metadata = {
   title: "Shop Nike",
@@ -17,7 +14,6 @@ export const metadata = {
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession(authOptions);
 
   return (
     <html lang="en">
@@ -25,15 +21,9 @@ export default async function RootLayout({ children }) {
         className={`${helvetica.variable} font-helvetica text-[#111111] ${inter.variable} `}
       >
         <ShopProvider>
-          <SessionProvider>
-            {!session ? (
-              <AuthScreen />
-            ) : (
-              <>
+    
                 <Header /> {children} <Footer />
-              </>
-            )}
-          </SessionProvider>
+           
         </ShopProvider>
       </body>
     </html>
